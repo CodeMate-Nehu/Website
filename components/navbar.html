@@ -1,0 +1,109 @@
+<!-- Fixed Header Bar -->
+<header class="site-header">
+    <div class="logo-hover-zone"></div>
+    <div class="header-inner">
+        <!-- Logo — top left -->
+        <a href="/" class="header-logo">
+            <img src="images/logo.png" alt="CodeMate Logo" class="logo-img">
+        </a>
+
+        <!-- Menu Toggle Button — top right -->
+        <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Toggle menu">
+            <div class="menu-btn-text-wrap">
+                <p class="menu-btn-label">Menu</p>
+                <p class="menu-btn-label">Close</p>
+            </div>
+            <div class="menu-btn-icon-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 16" fill="none" class="menu-btn-icon">
+                    <path d="M7.33333 16L7.33333 0L8.66667 0L8.66667 16L7.33333 16Z" fill="currentColor"></path>
+                    <path d="M16 8.66667L0 8.66667L0 7.33333L16 7.33333L16 8.66667Z" fill="currentColor"></path>
+                    <path d="M6 7.33333L7.33333 7.33333L7.33333 6C7.33333 6.73637 6.73638 7.33333 6 7.33333Z" fill="currentColor"></path>
+                    <path d="M10 7.33333L8.66667 7.33333L8.66667 6C8.66667 6.73638 9.26362 7.33333 10 7.33333Z" fill="currentColor"></path>
+                    <path d="M6 8.66667L7.33333 8.66667L7.33333 10C7.33333 9.26362 6.73638 8.66667 6 8.66667Z" fill="currentColor"></path>
+                    <path d="M10 8.66667L8.66667 8.66667L8.66667 10C8.66667 9.26362 9.26362 8.66667 10 8.66667Z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </button>
+    </div>
+</header>
+
+<!-- Fullscreen Navigation Overlay -->
+<div class="nav-overlay" id="navOverlay" data-nav="closed">
+    <!-- Click-to-close background -->
+    <div class="nav-overlay-bg" id="navOverlayBg"></div>
+    
+    <!-- Menu Panel -->
+    <nav class="nav-menu-panel">
+        <!-- Backdrop layers for staggered reveal -->
+        <div class="nav-menu-bg">
+            <div class="nav-backdrop-layer first"></div>
+            <div class="nav-backdrop-layer second"></div>
+            <div class="nav-backdrop-layer"></div>
+        </div>
+
+        <!-- Menu Content -->
+        <div class="nav-menu-content">
+            <ul class="nav-menu-list">
+                <li class="nav-menu-item" data-shape="1">
+                    <a href="#home" class="nav-menu-link">
+                        <span class="nav-link-text">Home</span>
+                        
+                    </a>
+                </li>
+                <li class="nav-menu-item" data-shape="2">
+                    <a href="#resources" class="nav-menu-link">
+                        <span class="nav-link-text">Resources</span>
+                        
+                    </a>
+                </li>
+                <li class="nav-menu-item" data-shape="3">
+                    <a href="#events" class="nav-menu-link">
+                        <span class="nav-link-text">Events</span>
+                        
+                    </a>
+                </li>
+                <li class="nav-menu-item" data-shape="4">
+                    <a href="#impact" class="nav-menu-link">
+                        <span class="nav-link-text">Impact</span>
+                        
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Abstract shapes (hover reveals) -->
+        <div class="nav-ambient-shapes">
+            <!-- Consolidating all shapes into one SVG for better parsing robustness -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="nav-ambient-shapes-svg" viewBox="0 0 400 400" fill="none" style="position: absolute; inset: 0; width: 100%; height: 100%;">
+                <g class="nav-bg-shape nav-bg-shape-1">
+                    <circle class="nav-shape-el" cx="80" cy="120" r="40" fill="rgba(255,107,0,0.15)"></circle>
+                    <circle class="nav-shape-el" cx="300" cy="80" r="60" fill="rgba(255,107,0,0.1)"></circle>
+                    <circle class="nav-shape-el" cx="200" cy="300" r="80" fill="rgba(255,140,50,0.08)"></circle>
+                </g>
+                <g class="nav-bg-shape nav-bg-shape-2">
+                    <path class="nav-shape-el" d="M0 200 Q100 100, 200 200 T 400 200" stroke="rgba(255,107,0,0.15)" stroke-width="60" fill="none"></path>
+                    <path class="nav-shape-el" d="M0 280 Q100 180, 200 280 T 400 280" stroke="rgba(255,140,50,0.1)" stroke-width="40" fill="none"></path>
+                </g>
+                <g class="nav-bg-shape nav-bg-shape-3">
+                    <circle class="nav-shape-el" cx="50" cy="50" r="8" fill="rgba(255,107,0,0.25)"></circle>
+                    <circle class="nav-shape-el" cx="150" cy="50" r="8" fill="rgba(255,140,50,0.25)"></circle>
+                    <circle class="nav-shape-el" cx="250" cy="50" r="8" fill="rgba(255,107,0,0.2)"></circle>
+                    <circle class="nav-shape-el" cx="100" cy="150" r="12" fill="rgba(255,107,0,0.2)"></circle>
+                    <circle class="nav-shape-el" cx="200" cy="150" r="12" fill="rgba(255,140,50,0.2)"></circle>
+                    <circle class="nav-shape-el" cx="300" cy="150" r="12" fill="rgba(255,107,0,0.15)"></circle>
+                    <circle class="nav-shape-el" cx="150" cy="250" r="10" fill="rgba(255,140,50,0.2)"></circle>
+                    <circle class="nav-shape-el" cx="250" cy="250" r="10" fill="rgba(255,107,0,0.2)"></circle>
+                </g>
+                <g class="nav-bg-shape nav-bg-shape-4">
+                    <path class="nav-shape-el" d="M100 100 Q150 50, 200 100 Q250 150, 200 200 Q150 250, 100 200 Q50 150, 100 100" fill="rgba(255,107,0,0.1)"></path>
+                    <path class="nav-shape-el" d="M250 200 Q300 150, 350 200 Q400 250, 350 300 Q300 350, 250 300 Q200 250, 250 200" fill="rgba(255,140,50,0.08)"></path>
+                </g>
+                <g class="nav-bg-shape nav-bg-shape-5">
+                    <line class="nav-shape-el" x1="0" y1="100" x2="300" y2="400" stroke="rgba(255,107,0,0.12)" stroke-width="30"></line>
+                    <line class="nav-shape-el" x1="100" y1="0" x2="400" y2="300" stroke="rgba(255,140,50,0.1)" stroke-width="25"></line>
+                </g>
+            </svg>
+        </div>
+    </nav>
+    <div class="injection-trap" style="display: none;"></div>
+</div>

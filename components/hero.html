@@ -1,0 +1,72 @@
+<section id="home" class="hero twogood-v2">
+    <!-- Cursor-reveal background image (only visible near mouse) -->
+    <img
+        class="hero-reveal-img"
+        src="images/sot4.png"
+        alt="NEHU School of Technology"
+    />
+
+    <div class="hero-text-container">
+        <h1 class="massive-title reveal">
+            <span class="word-small">BUILD.</span><br>
+            <div class="gooey-text-container">
+                <span id="text1" class="word-large accent gooey-span"></span>
+                <span id="text2" class="word-large accent gooey-span"></span>
+            </div>
+            <span class="word-small">GROW.</span>
+        </h1>
+    </div>
+
+    <!-- SVG filter for the gooey/liquid text effect -->
+    <svg id="filters" style="display: none;">
+        <defs>
+            <filter id="threshold">
+                <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
+                                        0 1 0 0 0
+                                        0 0 1 0 0
+                                        0 0 0 255 -140" />
+            </filter>
+        </defs>
+    </svg>
+
+    <div class="scroll-box-container">
+        <div class="mission-scroll-box">
+            <!-- Video background -->
+            <video
+                autoplay
+                loop
+                muted
+                playsinline
+                class="mission-video-bg"
+                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4"
+            ></video>
+
+            <!-- Gradient overlays -->
+            <div class="mission-gradient-top"></div>
+            <div class="mission-gradient-bottom"></div>
+
+            <!-- Content layer -->
+            <div class="mission-prisma-content">
+                <!-- Top-left: CodeMate label -->
+                <span class="mission-label">CodeMate</span>
+
+                <!-- Bottom row: title left, description right -->
+                <div class="mission-bottom-row">
+                    <div class="mission-bottom-left">
+                        <h2 class="mission-hero-title">where students become ready for what comes next</h2>
+                    </div>
+                    <div class="mission-bottom-right">
+                        <p class="mission-hero-desc">
+                            CodeMate exists because the gap between classroom and career was too wide. We built a place where students find resources, mentors, and peers who understand the journey ahead.
+                        </p>
+                        <ul class="mission-hero-list">
+                            <li>Placement preparation that actually works</li>
+                            <li>Guidance for higher studies anywhere in the world</li>
+                            <li>A community that grows together and lifts each other up</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
