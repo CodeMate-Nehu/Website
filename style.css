@@ -99,7 +99,7 @@ h4 {
     color: var(--accent);
     letter-spacing: 2px;
     display: block;
-    margin-bottom: 0rem;
+    margin-bottom: 1.5rem;
     margin-left: 4rem;
     margin-top: 3rem;
     text-align: center;
@@ -914,7 +914,6 @@ h4 {
 .events-heading-space {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
 }
 
 .events-nav-dots {
@@ -1377,6 +1376,31 @@ h4 {
 
     .section-title {
         font-size: 2.25rem;
+    }
+
+    /* Alignments for mobile */
+    .section-tagline,
+    .section-subtitle-resources,
+    .section-subtitle-events,
+    .section-subtitle-impact {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        text-align: center;
+    }
+
+    .events-animated-right {
+        margin-right: 0;
+        margin-top: 2rem;
+    }
+
+    .impact-marquee-wrapper {
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .events-heading-space {
+        align-items: center;
+        text-align: center;
     }
 
     /* Hide View All button on mobile */
