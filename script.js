@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'events-container', path: 'components/events.html' },
         { id: 'impact-container', path: 'components/impact.html' },
         { id: 'members-container', path: 'components/members.html' },
-        { id: 'footer-container', path: 'components/footer.html' }
+        { id: 'footer-container', path: 'components/footer.html' },
+        { id: 'chatbot-container', path: 'components/chatbot.html' }
     ];
 
     async function loadComponent(component) {
@@ -577,7 +578,92 @@ document.addEventListener('DOMContentLoaded', () => {
         // ── 9. FOOTER SECTION ──
         // (Currently handled by CSS & Component Loading)
 
-        // ── 10. ASSETS PRELOADING ──
+        // ── 10. CHATBOT LOGIC ──
+        function initChatbot() {
+            const toggleBtn = document.getElementById('chatbot-toggle');
+            const closeBtn = document.getElementById('chatbot-close');
+            const chatWindow = document.getElementById('chatbot-window');
+            const chatForm = document.getElementById('chatbot-form');
+            const chatInput = document.getElementById('chatbot-input');
+            const messagesContainer = document.getElementById('chatbot-messages');
+
+            if (!toggleBtn || !chatWindow) return;
+
+            toggleBtn.addEventListener('click', () => {
+                chatWindow.classList.toggle('hidden');
+                if (!chatWindow.classList.contains('hidden')) {
+                    chatInput.focus();
+                }
+            });
+
+            closeBtn.addEventListener('click', () => {
+                chatWindow.classList.add('hidden');
+            });
+
+            function addMessage(text, isUser) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+                
+                let contentHTML;
+                if (isUser) {
+                    contentHTML = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                } else {
+                    if (typeof marked !== 'undefined') {
+                        contentHTML = marked.parse(text);
+                    } else {
+                        contentHTML = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                    }
+                }
+                
+                msgDiv.innerHTML = `<div class="message-content">${contentHTML}</div>`;
+                messagesContainer.appendChild(msgDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            if (chatForm) {
+                chatForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const message = chatInput.value.trim();
+                    if (!message) return;
+
+                    addMessage(message, true);
+                    chatInput.value = '';
+                    
+                    // Show typing indicator
+                    const typingId = 'typing-' + Date.now();
+                    const typingDiv = document.createElement('div');
+                    typingDiv.id = typingId;
+                    typingDiv.className = 'message bot-message';
+                    typingDiv.innerHTML = '<div class="message-content typing-indicator"><span>.</span><span>.</span><span>.</span></div>';
+                    messagesContainer.appendChild(typingDiv);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                    try {
+                        const response = await fetch('/api/chat', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ message })
+                        });
+                        
+                        const data = await response.json();
+                        document.getElementById(typingId).remove();
+                        
+                        if (response.ok) {
+                            addMessage(data.answer, false);
+                        } else {
+                            addMessage(data.error || "Sorry, something went wrong.", false);
+                        }
+                    } catch (err) {
+                        const t = document.getElementById(typingId);
+                        if(t) t.remove();
+                        addMessage("Connection error. Please try again.", false);
+                    }
+                });
+            }
+        }
+        initChatbot();
+
+        // ── 11. ASSETS PRELOADING ──
         function preloadAssets() {
             const imagesToPreload = [];
             if (typeof memberGroups !== 'undefined') {

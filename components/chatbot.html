@@ -1,0 +1,37 @@
+<div class="chatbot-widget">
+    <button id="chatbot-toggle" class="chatbot-toggle-btn" aria-label="Toggle Chat">
+        <i class="fa-solid fa-message"></i>
+    </button>
+    
+    <div id="chatbot-window" class="chatbot-window hidden">
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div>
+                    <h3>CodeMate Assistant</h3>
+                    <p>Online</p>
+                </div>
+            </div>
+            <button id="chatbot-close" class="chatbot-close-btn" aria-label="Close Chat">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <div id="chatbot-messages" class="chatbot-messages">
+            <div class="message bot-message">
+                <div class="message-content">
+                    Hi! I'm the CodeMate Assistant. How can I help you today?
+                </div>
+            </div>
+        </div>
+        
+        <form id="chatbot-form" class="chatbot-input-area">
+            <input type="text" id="chatbot-input" placeholder="Ask about CodeMate..." autocomplete="off" required>
+            <button type="submit" id="chatbot-send" aria-label="Send Message">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+</div>
