@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "League Spartan", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono-custom: "Share Tech Mono", monospace;
+  --font-display: "Space Grotesk", sans-serif;
+
+  --color-brand-primary: #f37f30;
+  --color-brand-primary-dark: #d5641b;
+  --color-brand-dark: #1e1e1e;
+  --color-brand-card-dark: #1b1b1c;
+  --color-brand-gray-light: #f3f4f6;
+  --color-brand-gray-medium: #2f2f2f;
+  --color-brand-gray-dark: #262626;
+  --color-brand-orange-bg: #e87c33;
+  --color-brand-light: #f9f9f9;
+  --color-brand-white: #f5f6f5;
+  --color-brand-black: #000;
+}
+
+/* Custom background animations and glows */
+.orange-glow-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1000px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(243, 127, 48, 0.12) 0%,
+    rgba(243, 127, 48, 0.03) 50%,
+    rgba(15, 15, 16, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orange-glow-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(243, 127, 48, 0.08) 0%,
+    rgba(243, 127, 48, 0.02) 60%,
+    rgba(15, 15, 16, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card-glow {
+  background: radial-gradient(
+    circle at top right,
+    rgba(243, 127, 48, 0.15) 0%,
+    rgba(27, 27, 28, 0) 70%
+  );
+}
+
+/* Smooth transition for active elements */
+.hover-scale {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-scale:hover {
+  transform: translateY(-4px);
+}
