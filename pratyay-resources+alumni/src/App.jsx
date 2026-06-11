@@ -4,7 +4,8 @@
  * dynamically routing between Resources, Alumni, Alumni Detailed, and Alumni View All views.
  */
 import { useState } from 'react';
-import Navbar from './components/Navbar';
+import StaggeredMenu from './components/ui/StaggeredMenu';
+import Logo from './assets/BrandLogo.png';
 import Resources from './pages/Resources';
 import Alumni from './pages/Alumni';
 import AlumniDetailed from './pages/AlumniDetailed';
@@ -37,7 +38,31 @@ function App() {
   return (
     <div className="min-h-screen bg-brand-dark flex flex-col justify-between">
       <div>
-        <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <StaggeredMenu
+          position="right"
+          isFixed={true}
+          items={[
+            { label: 'Home', ariaLabel: 'Go to home page', link: '#alumni', onClick: () => setCurrentPage('alumni') },
+            { label: 'Resources', ariaLabel: 'View resources', link: '#resources', onClick: () => setCurrentPage('resources') },
+            { label: 'Events', ariaLabel: 'View events', link: '#events', onClick: () => {} },
+            { label: 'Community', ariaLabel: 'Join community', link: '#community', onClick: () => {} }
+          ]}
+          socialItems={[
+            { label: 'Facebook', link: 'https://facebook.com/mvpblocks' },
+            { label: 'Instagram', link: 'https://instagram.com/mvpblocks' },
+            { label: 'Twitter', link: 'https://twitter.com/mvpblocks' },
+            { label: 'GitHub', link: 'https://github.com/mvpblocks' },
+            { label: 'Dribbble', link: 'https://dribbble.com/mvpblocks' }
+          ]}
+          displaySocials={true}
+          displayItemNumbering={true}
+          menuButtonColor="#1f2937"
+          openMenuButtonColor="#1f2937"
+          changeMenuColorOnOpen={true}
+          colors={['#ffedd5', '#f37f30']}
+          logoUrl={Logo}
+          accentColor="#f37f30"
+        />
         {currentPage === 'resources' && <Resources />}
         {currentPage === 'alumni' && (
           <Alumni 

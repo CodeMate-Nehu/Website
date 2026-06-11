@@ -14,6 +14,7 @@ import {
   Mail,
   ArrowLeft,
 } from "lucide-react";
+import { GridPattern } from "@/components/ui/grid-pattern";
 
 const AlumniViewAll = ({ onSelectAlumni, onBack }) => {
   // Categorized Alumni Groups matching the reference image categories
@@ -322,7 +323,7 @@ const AlumniViewAll = ({ onSelectAlumni, onBack }) => {
   ];
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-brand-dark text-white font-sans selection:bg-brand-primary selection:text-black">
+    <main className="relative min-h-screen overflow-x-hidden bg-brand-dark text-zinc-800 font-sans selection:bg-brand-primary selection:text-black">
       {/* Background Radial Glow */}
       <div className="orange-glow-top" aria-hidden="true" />
 
@@ -333,7 +334,7 @@ const AlumniViewAll = ({ onSelectAlumni, onBack }) => {
         {/* Back Link */}
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors duration-200 text-sm font-semibold mb-8 cursor-pointer"
+          className="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-900 transition-colors duration-200 text-sm font-semibold mb-8 cursor-pointer"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Alumni Dashboard
@@ -343,7 +344,7 @@ const AlumniViewAll = ({ onSelectAlumni, onBack }) => {
           <span className="inline-block font-sans text-xs font-semibold tracking-[0.25em] text-brand-primary uppercase">
             SCET Directory
           </span>
-          <h1 className="font-heading text-4xl sm:text-5xl font-extrabold tracking-tight text-white uppercase leading-none">
+          <h1 className="font-heading text-4xl sm:text-5xl font-extrabold tracking-tight text-zinc-900 uppercase leading-none">
             Alumni Networks
           </h1>
         </div>
@@ -356,13 +357,35 @@ const AlumniViewAll = ({ onSelectAlumni, onBack }) => {
         {categories.map((cat) => (
           <div key={cat.id} className="space-y-6">
             {/* Category Header */}
-            <div>
-              <span className="inline-block font-sans text-xs font-bold tracking-widest text-brand-primary uppercase">
-                {cat.tag}
-              </span>
-              <h2 className="font-heading text-3xl font-extrabold text-white leading-tight uppercase mt-1">
-                {cat.title}
-              </h2>
+            <div className="relative py-8 px-6 overflow-hidden rounded-2xl border border-zinc-200/40 bg-zinc-50/20">
+              {cat.id === "leaders" && (
+                <GridPattern
+                  width={30}
+                  height={300000000}
+                  squares={[
+                    [4, 2],
+                    [5, 1],
+                    [8, 2],
+                    [5, 3],
+                    [5, 5],
+                    [10, 2],
+                  ]}
+                  className="[mask-image:radial-gradient(220px_circle_at_center,white,transparent)] opacity-85 inset-y-[-10%]"
+                />
+              )}
+              <div className="relative z-10">
+                <span className="inline-block font-sans text-xs font-bold tracking-widest text-brand-primary uppercase">
+                  {cat.tag}
+                </span>
+                <h2 className="font-heading text-4xl font-extrabold text-zinc-900 leading-tight uppercase mt-1">
+                  {cat.id === "leaders" ? "the founders" : cat.title}
+                </h2>
+                {cat.id === "leaders" && (
+                  <p className="font-sans text-sm text-zinc-500 mt-2 font-normal">
+                    who laid the vision behind the community
+                  </p>
+                )}
+              </div>
             </div>
 
             {/* Grid of Cards */}

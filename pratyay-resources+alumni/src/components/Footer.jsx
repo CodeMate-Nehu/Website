@@ -1,204 +1,276 @@
-/*
- * Footer.jsx
- * Multi-column responsive footer containing brand information,
- * quick navigation links, contact details, social media icons, and copyright.
- */
-import { Mail, Hexagon } from "lucide-react";
-import Button from "./Button";
-const Footer = () => {
+import React from "react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import BrandLogo from "../assets/BrandLogo.png";
+const SocialIcon = ({ href, label, children }) => (
+  <a
+    href={href}
+    aria-label={label}
+    className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/6 border border-white/10 text-slate-400 hover:bg-indigo-500/20 hover:text-indigo-300 hover:border-indigo-500/40 transition-all duration-200"
+  >
+    {children}
+  </a>
+);
+
+const FooterLink = ({ href, children }) => (
+  <a
+    href={href}
+    className="text-[#1A1A1A] hover:text-indigo-300 transition-colors duration-200"
+  >
+    {children}
+  </a>
+);
+
+const LegalLink = ({ href, children }) => (
+  <a
+    href={href}
+    className="text-slate-600 hover:text-slate-400 transition-colors duration-200 text-sm"
+  >
+    {children}
+  </a>
+);
+
+export default function Footer() {
   return (
-    <footer className="w-full bg-[#0a0a0b] border-t border-zinc-900 pt-16 pb-8 text-zinc-400">
-      {/* 4. CALL TO ACTION SECTION */}
-      {/* ========================================================================= */}
-      <section className="relative z-10 mx-auto max-w-[80vw] px-4 py-24 sm:px-6 lg:px-8 text-center h-[60vh] flex flex-col justify-center items-center bg-[radial-gradient(circle,rgba(243,127,48,0.08)_0%,rgba(243,127,48,0.02)_60%,rgba(15,15,16,0)_100%)]">
-        {/* Title */}
-        <h2 className="font-heading text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
-          be a part of <span className="text-brand-primary">CodeMate</span>
-        </h2>
-
-        {/* Description */}
-        <p className="font-sans text-sm sm:text-base text-zinc-400 max-w-md mx-auto mb-8">
-          Join a community that helps you grow, connect, and stay ahead.
-        </p>
-
-        {/* CTA Button */}
-        <div className="flex justify-center">
-          <Button variant="primary" size="lg">
-            Join Us
-          </Button>
-        </div>
-      </section>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Upper footer grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12">
-          {/* Brand & Address Column */}
-          <div className="md:col-span-6 space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="relative flex items-center justify-center text-brand-primary">
-                <Hexagon className="h-6 w-6 fill-brand-primary/20 stroke-[2]" />
-                <div className="absolute font-sans text-[10px] font-bold text-white leading-none">
-                  {"</>"}
-                </div>
-              </div>
-              <span className="font-heading text-lg font-bold tracking-tight text-white">
-                Code<span className="text-brand-primary">Mate</span>
-              </span>
-            </div>
-
-            <div className="space-y-1.5 text-sm font-sans text-zinc-500">
-              <p>SCET, Surat, Gujarat</p>
-              <p>India - 395001</p>
-              <p className="pt-2">
-                <a
-                  href="mailto:co-codemate@gmail.com"
-                  className="hover:text-white transition-colors duration-200"
-                >
-                  co-codemate@gmail.com
-                </a>
+    <footer className="bg-#F5F5F5 text-[#1A1A1A] font-inter">
+      {/* Newsletter Section */}
+      <div className="px-6 pt-12 pb-0 max-w-[75vw] mx-auto">
+        <div className="bg-white/4 border border-white/10 backdrop-blur-2xl rounded-3xl p-8 md:p-12 overflow-hidden relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            {/* Newsletter Content */}
+            <div>
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A1A1A] mb-3 md:mb-4 text-[2.5rem] ">
+                Stay ahead with CodeMate.
+              </h3>
+              <p className="text-sm md:text-base text-[#1A1A1A] leading-relaxed">
+                Join thousands of students who trust CodeMate for their career
+                and placement prep.
               </p>
             </div>
+
+            {/* Newsletter Visual */}
+            <div className="hidden md:block relative rounded-2xl overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80"
+                alt="Community"
+                className="w-full h-100 object-cover rounded-2xl opacity-85"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Grid */}
+      <div className="px-6 py-14 max-w-[75vw] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
+          {/* Brand Column */}
+          <div className="col-span-1">
+            <div className="mb-6 flex items-start">
+              <img
+                src={BrandLogo}
+                alt="CodeMate Logo"
+                className=" w-50 object-contain self-start"
+                onError={(e) => {
+                  e.target.style.display = "none";
+                  e.target.nextSibling.style.display = "block";
+                }}
+              />
+            </div>
+            <p className="text-xs md:text-sm text-[#1A1A1A] leading-relaxed mb-6">
+              Building beautiful and functional web experiences with modern
+              technologies. We help students and businesses create their digital
+              presence.
+            </p>
+            <div className="flex gap-2 flex-wrap">
+              {/* Facebook */}
+              <SocialIcon href="#" label="Facebook">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+              </SocialIcon>
+
+              {/* Instagram */}
+              <SocialIcon href="#" label="Instagram">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </SocialIcon>
+
+              {/* Twitter */}
+              <SocialIcon href="#" label="Twitter / X">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </SocialIcon>
+
+              {/* GitHub */}
+              <SocialIcon href="#" label="GitHub">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                </svg>
+              </SocialIcon>
+
+              {/* LinkedIn */}
+              <SocialIcon href="#" label="LinkedIn">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </SocialIcon>
+            </div>
           </div>
 
-          {/* Quick Links Column 1 */}
-          <div className="md:col-span-3 space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-300">
-              Explore
+          {/* About Us */}
+          <div>
+            <h4 className="text-xs font-semibold text-[#1A1A1A] uppercase tracking-widest mb-5">
+              About Us
             </h4>
-            <ul className="space-y-2.5 text-sm font-sans">
+            <ul className="space-y-3">
+              {[
+                "Company History",
+                "Meet the Team",
+                "Employee Handbook",
+                "Careers",
+              ].map((item) => (
+                <li key={item}>
+                  <FooterLink href="#">{item}</FooterLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Our Services */}
+          <div>
+            <h4 className="text-xs font-semibold text-[#1A1A1A] uppercase tracking-widest mb-5">
+              Our Services
+            </h4>
+            <ul className="space-y-3">
+              {[
+                "Web Development",
+                "Web Design",
+                "Placement Prep",
+                "Higher Studies",
+              ].map((item) => (
+                <li key={item}>
+                  <FooterLink href="#">{item}</FooterLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Helpful Links */}
+          <div>
+            <h4 className="text-xs font-semibold text-[#1A1A1A] uppercase tracking-widest mb-5">
+              Helpful Links
+            </h4>
+            <ul className="space-y-3">
               <li>
-                <a
-                  href="#"
-                  className="hover:text-white transition-colors duration-200"
-                >
-                  Home
-                </a>
+                <FooterLink href="#">FAQs</FooterLink>
+              </li>
+              <li>
+                <FooterLink href="#">Support</FooterLink>
               </li>
               <li>
                 <a
                   href="#"
-                  className="text-brand-primary font-medium hover:text-brand-primary-dark transition-colors duration-200"
+                  className="inline-flex items-center gap-2 text-[#1A1A1A] hover:text-indigo-300 transition-colors duration-200"
                 >
-                  Resources
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-white transition-colors duration-200"
-                >
-                  Events
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-white transition-colors duration-200"
-                >
-                  Community
+                  Live Chat
+                  <span className="relative inline-flex h-2 w-2">
+                    <span className="animate-pulse absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                  </span>
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Quick Links Column 2 */}
-          <div className="md:col-span-3 space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-300">
-              Company
+          {/* Contact Us */}
+          <div>
+            <h4 className="text-xs font-semibold text-[#1A1A1A] uppercase tracking-widest mb-5">
+              Contact Us
             </h4>
-            <ul className="space-y-2.5 text-sm font-sans">
-              <li>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <Mail
+                  size={16}
+                  className="text-indigo-400 flex-shrink-0 mt-1"
+                />
                 <a
-                  href="#"
-                  className="hover:text-white transition-colors duration-200"
+                  href="mailto:hello@codemate.com"
+                  className="text-[#1A1A1A] hover:text-indigo-300 transition-colors duration-200 text-sm"
                 >
-                  Contact Us
+                  hello@codemate.com
                 </a>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-white transition-colors duration-200"
-                >
-                  About Us
-                </a>
+              <li className="flex items-start gap-3">
+                <Phone
+                  size={16}
+                  className="text-indigo-400 flex-shrink-0 mt-1"
+                />
+                <span className="text-[#1A1A1A] text-sm">+91 8637373116</span>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-white transition-colors duration-200"
-                >
-                  Terms
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-white transition-colors duration-200"
-                >
-                  Privacy
-                </a>
+              <li className="flex items-start gap-3">
+                <MapPin
+                  size={16}
+                  className="text-indigo-400 flex-shrink-0 mt-1"
+                />
+                <address className="text-[#1A1A1A] text-sm not-italic">
+                  Guwahati, Assam, India
+                </address>
               </li>
             </ul>
           </div>
         </div>
+      </div>
 
-        {/* Lower footer */}
-        <div className="border-t border-zinc-900 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-zinc-600 font-sans order-2 sm:order-1 text-center sm:text-left">
-            &copy; 2026 CodeMate. All rights reserved.
+      {/* Bottom Bar */}
+      <div className="border-t border-white/7 px-6 py-5">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <p className="text-sm text-slate-600">
+            &copy; 2025 CodeMate. All rights reserved.
           </p>
-
-          <div className="flex items-center gap-5 order-1 sm:order-2">
-            <a
-              href="mailto:co-codemate@gmail.com"
-              className="text-zinc-600 hover:text-white transition-colors duration-200"
-              aria-label="Email CodeMate"
-            >
-              <Mail className="h-5 w-5 stroke-[1.5]" />
-            </a>
-
-            {/* Custom SVG for LinkedIn */}
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-zinc-600 hover:text-white transition-colors duration-200"
-              aria-label="LinkedIn Profile"
-            >
-              <svg
-                className="h-[18px] w-[18px] fill-current"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-              </svg>
-            </a>
-
-            {/* Custom SVG for Instagram */}
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-zinc-600 hover:text-white transition-colors duration-200"
-              aria-label="Instagram Profile"
-            >
-              <svg
-                className="h-[18px] w-[18px] fill-none stroke-current stroke-[2]"
-                viewBox="0 0 24 24"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
-            </a>
+          <div className="flex gap-6">
+            {["Terms of Service", "Privacy Policy", "Cookie Settings"].map(
+              (label) => (
+                <LegalLink key={label} href="#">
+                  {label}
+                </LegalLink>
+              ),
+            )}
           </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

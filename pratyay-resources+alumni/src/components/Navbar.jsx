@@ -27,7 +27,7 @@ const Navbar = ({ currentPage = "resources", setCurrentPage }) => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-zinc-800/40 bg-brand-dark/80 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 w-full border-b border-zinc-200/60 bg-brand-dark/80 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo Section */}
@@ -50,7 +50,7 @@ const Navbar = ({ currentPage = "resources", setCurrentPage }) => {
                   className={`font-heading text-lg font-semibold transition-colors duration-200 ${
                     isActive
                       ? "text-brand-primary underline underline-offset-4 decoration-2 transition duration-300 ease-in-out hover:text-brand-primary-dark"
-                      : "text-zinc-400 hover:text-white"
+                      : "text-zinc-500 hover:text-zinc-900"
                   }`}
                 >
                   {link.name}
@@ -74,7 +74,7 @@ const Navbar = ({ currentPage = "resources", setCurrentPage }) => {
           <div className="flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center rounded-md p-2 text-zinc-400 hover:bg-zinc-800 hover:text-white focus:outline-none"
+              className="inline-flex items-center justify-center rounded-md p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-950 focus:outline-none"
               aria-expanded={isOpen}
               aria-label="Toggle navigation menu"
             >
@@ -90,7 +90,7 @@ const Navbar = ({ currentPage = "resources", setCurrentPage }) => {
 
       {/* Mobile Menu Dropdown */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out border-b border-zinc-800 bg-brand-dark ${
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out border-b border-zinc-200 bg-brand-dark ${
           isOpen
             ? "max-h-72 opacity-100 py-4"
             : "max-h-0 opacity-0 pointer-events-none"
@@ -106,8 +106,8 @@ const Navbar = ({ currentPage = "resources", setCurrentPage }) => {
                 onClick={(e) => handleLinkClick(e, link.id)}
                 className={`block rounded-lg px-3 py-2 text-base font-medium transition-colors ${
                   isActive
-                    ? "bg-zinc-900 text-brand-primary"
-                    : "text-zinc-400 hover:bg-zinc-900 hover:text-white"
+                    ? "bg-zinc-100 text-brand-primary"
+                    : "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-950"
                 }`}
               >
                 {link.name}

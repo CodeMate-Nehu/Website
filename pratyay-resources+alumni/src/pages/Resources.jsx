@@ -16,7 +16,7 @@ import Button from "../components/Button";
 
 const Resources = () => {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-brand-dark text-white font-sans selection:bg-brand-primary   selection:text-black">
+    <main className="relative min-h-screen overflow-x-hidden bg-brand-dark text-zinc-800 font-sans selection:bg-brand-primary selection:text-black">
       {/* Background Glows */}
       <div className="orange-glow-top" aria-hidden="true" />
 
@@ -25,18 +25,18 @@ const Resources = () => {
       {/* ========================================================================= */}
       <section className="relative z-10 mb-20 mx-auto max-w-[80vw] px-4 pt-20 pb-16 sm:px-6 md:pt-32 md:pb-24 lg:px-8 text-center h-[75vh] flex flex-col justify-center">
         {/* Uppercase Tag */}
-        <span className="inline-block  text-xl font-semibold tracking-[0.25em] text-brand-primary font-display uppercase mb-4">
+        <span className="inline-block text-xl font-semibold tracking-[0.25em] text-brand-primary font-display uppercase mb-4">
           Master Your Career
         </span>
 
         {/* Main Title */}
-        <h1 className="font-heading text-5xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl max-w-5xl mx-auto leading-none mb-6">
+        <h1 className="font-heading text-5xl font-extrabold tracking-tight text-zinc-900 sm:text-6xl md:text-7xl lg:text-8xl max-w-5xl mx-auto leading-none mb-6">
           prepare for what <br className="hidden sm:inline" />
           <span className="text-brand-primary">comes next</span>
         </h1>
 
         {/* Subtitle Description */}
-        <p className="font-sans text-base sm:text-lg md:text-xl text-zinc-200 max-w-3xl mx-auto leading-relaxed mb-10 px-2">
+        <p className="font-sans text-base sm:text-lg md:text-xl text-zinc-600 max-w-3xl mx-auto leading-relaxed mb-10 px-2">
           Bridging the gap between education and high-impact work through
           curated roadmaps, mentorship, and industry-standard resources.
         </p>
@@ -60,7 +60,7 @@ const Resources = () => {
       {/* 2. THREE WAYS TO GO SECTION */}
       {/* ========================================================================= */}
       <section className="relative z-10 mx-auto my-30 max-w-[80vw]  py-12 sm:px-6  h-[80vh] flex items-center">
-        <div className="rounded-3xl  bg-brand-orange-bg p-8 sm:p-12 md:p-16 shadow-2xl shadow-brand-primary/10 h-full">
+        <div className="rounded-3xl  bg-brand-orange-bg p-8 sm:p-12 md:p-16 shadow-2xl shadow-brand-primary/10 h-fit">
           {/* Section Header */}
           <h2 className="font-display text-3xl font-bold sm:text-4xl text-black lowercase mb-10 tracking-tight">
             three ways to go
@@ -78,7 +78,7 @@ const Resources = () => {
                 <h3 className="font-heading text-4xl font-bold text-zinc-950 mb-3 leading-tight">
                   Land the role you want
                 </h3>
-                <p className="font-sans font-normal text-md text-zinc-600 leading-relaxed mb-8">
+                <p className="font-sans font-normal text-md text-zinc-650 leading-relaxed mb-8">
                   Master high-demand skills with curriculums from top alumni &
                   industry experts.
                 </p>
@@ -94,18 +94,18 @@ const Resources = () => {
               </div>
             </div>
 
-            {/* Card 2 - Career Pathways: India vs Abroad (Dark Glow) */}
-            <div className="flex flex-col justify-between rounded-2xl p-8 bg-brand-dark hover-scale ">
+            {/* Card 2 - Career Pathways: India vs Abroad (Light, was Dark) */}
+            <div className="flex flex-col justify-between rounded-2xl p-8 bg-brand-dark border border-zinc-200/60 hover-scale shadow-lg">
               <div>
                 {/* Icon Box */}
-                <div className="mb-6  h-25 w-25 inline-flex  items-center justify-center rounded-xl bg-[#323131] border border-zinc-800 text-brand-primary">
+                <div className="mb-6 h-25 w-25 inline-flex items-center justify-center rounded-xl bg-orange-100 text-brand-primary">
                   <GraduationCap className="h-6 w-6 stroke-[1.5]" />
                 </div>
-                <h3 className="font-heading text-4xl font-bold text-color-brand-white mb-3 leading-tight">
+                <h3 className="font-heading text-4xl font-bold text-zinc-950 mb-3 leading-tight">
                   Career Pathways: <br />
                   India vs Abroad
                 </h3>
-                <p className="font-sans text-md font-normal text-color-brand-white leading-relaxed mb-8">
+                <p className="font-sans text-md font-normal text-zinc-650 leading-relaxed mb-8">
                   Navigate the complex landscape of higher education and career
                   opportunities.
                 </p>
@@ -131,7 +131,7 @@ const Resources = () => {
                 <h3 className="font-heading text-4xl font-bold text-zinc-950 mb-3 leading-tight">
                   Where Learning Meets Opportunity
                 </h3>
-                <p className="font-sans font-normal text-md text-zinc-600 leading-relaxed mb-8">
+                <p className="font-sans font-normal text-md text-zinc-650 leading-relaxed mb-8">
                   Get access to exclusive internships and full-time roles
                   matching your goals.
                 </p>
@@ -154,7 +154,7 @@ const Resources = () => {
       {/* 3. WHAT OTHERS HAVE LEARNED SECTION */}
       {/* ========================================================================= */}
       <section className="relative z-10 mx-auto my-50 max-w-[80vw]  py-12 sm:px-6">
-        <div className="rounded-3xl bg-zinc-100 p-8 sm:p-12 md:p-16 text-zinc-900 shadow-xl">
+        <div className="rounded-3xl bg-zinc-50 p-8 sm:p-12 md:p-16 text-zinc-900 shadow-xl border border-zinc-200/50">
           {/* Header */}
           <div className="mb-10">
             <span className="inline-block font-sans text-xs font-bold tracking-[0.2em] text-brand-primary uppercase mb-2">
@@ -219,7 +219,7 @@ const Resources = () => {
                   </h3>
 
                   {/* Description */}
-                  <p className="font-sans text-sm sm:text-base text-zinc-600 leading-relaxed max-w-2xl">
+                  <p className="font-sans text-sm sm:text-base text-zinc-650 leading-relaxed max-w-2xl">
                     A comprehensive guide to building resumes that beat the ATS
                     and catch the eye of the top hiring managers. Including
                     templates and keywords.
@@ -227,9 +227,9 @@ const Resources = () => {
                 </div>
 
                 {/* Footer details */}
-                <div className="flex items-center justify-between pt-4 border-t border-zinc-100">
+                <div className="flex items-center justify-between pt-4 border-t border-zinc-200">
                   <div className="flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-full bg-zinc-900 flex items-center justify-center font-heading text-sm font-bold text-white border border-zinc-800 shadow-sm">
+                    <div className="h-9 w-9 rounded-full bg-zinc-150 flex items-center justify-center font-heading text-sm font-bold text-zinc-800 border border-zinc-200 shadow-sm">
                       GR
                     </div>
                     <div>
@@ -274,7 +274,7 @@ const Resources = () => {
                   </h3>
 
                   {/* Description */}
-                  <p className="font-sans text-sm sm:text-base text-zinc-600 leading-relaxed max-w-2xl">
+                  <p className="font-sans text-sm sm:text-base text-zinc-650 leading-relaxed max-w-2xl">
                     Deep dive into scalable architectures, load balancing,
                     databases, caching, and fundamental system design
                     principles.
@@ -282,9 +282,9 @@ const Resources = () => {
                 </div>
 
                 {/* Footer details */}
-                <div className="flex items-center justify-between pt-4 border-t border-zinc-100">
+                <div className="flex items-center justify-between pt-4 border-t border-zinc-200">
                   <div className="flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-full bg-zinc-900 flex items-center justify-center font-heading text-sm font-bold text-white border border-zinc-800 shadow-sm">
+                    <div className="h-9 w-9 rounded-full bg-zinc-150 flex items-center justify-center font-heading text-sm font-bold text-zinc-800 border border-zinc-200 shadow-sm">
                       GR
                     </div>
                     <div>

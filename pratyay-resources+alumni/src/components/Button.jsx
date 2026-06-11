@@ -22,11 +22,11 @@ const Button = ({
     primary:
       "bg-brand-primary text-black font-semibold hover:bg-brand-primary-dark shadow-lg shadow-brand-primary/10",
     secondary:
-      "bg-zinc-800/80 text-zinc-100 font-semibold hover:bg-zinc-700 border border-zinc-700/50",
+      "bg-zinc-100 text-zinc-850 font-semibold hover:bg-zinc-200 border border-zinc-200/80",
     outline:
-      "border border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white",
-    ghost: "text-zinc-400 hover:text-white hover:bg-zinc-800/50",
-    light: "bg-white text-zinc-950 font-semibold hover:bg-zinc-100 shadow-md",
+      "border border-zinc-300 text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950",
+    ghost: "text-zinc-500 hover:text-zinc-950 hover:bg-zinc-100",
+    light: "bg-white text-zinc-900 font-semibold hover:bg-zinc-50 border border-zinc-200/60 shadow-sm",
   };
 
   const sizes = {

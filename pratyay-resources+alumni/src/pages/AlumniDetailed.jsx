@@ -22,7 +22,7 @@ const AlumniDetailed = ({ alumni, onBack }) => {
   if (!alumni) return null;
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-brand-dark text-white font-sans selection:bg-brand-primary selection:text-black">
+    <main className="relative min-h-screen overflow-x-hidden bg-brand-dark text-zinc-800 font-sans selection:bg-brand-primary selection:text-black">
       {/* Background Radial Glow */}
       <div className="orange-glow-top" aria-hidden="true" />
 
@@ -33,7 +33,7 @@ const AlumniDetailed = ({ alumni, onBack }) => {
         {/* Back Link */}
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors duration-200 text-sm font-semibold mb-8 cursor-pointer"
+          className="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-900 transition-colors duration-200 text-sm font-semibold mb-8 cursor-pointer"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Alumni
@@ -45,7 +45,7 @@ const AlumniDetailed = ({ alumni, onBack }) => {
             <span className="inline-block font-sans text-xs font-semibold tracking-[0.25em] text-brand-primary uppercase">
               Our People
             </span>
-            <h1 className="font-heading text-5xl sm:text-6xl font-extrabold tracking-tight text-white uppercase leading-none">
+            <h1 className="font-heading text-5xl sm:text-6xl font-extrabold tracking-tight text-zinc-900 uppercase leading-none">
               The Industry <br /> Leaders
             </h1>
           </div>
@@ -59,7 +59,7 @@ const AlumniDetailed = ({ alumni, onBack }) => {
             ].map((stat, idx) => (
               <div
                 key={idx}
-                className="flex flex-col justify-center items-start p-5 rounded-2xl bg-[#E5E5E7] w-32 "
+                className="flex flex-col justify-center items-start p-5 rounded-2xl bg-zinc-100 border border-zinc-200/60 w-32 "
               >
                 <span className="font-heading text-2xl font-extrabold text-brand-primary">
                   {stat.value}
@@ -77,7 +77,7 @@ const AlumniDetailed = ({ alumni, onBack }) => {
       {/* 2. SPLIT PROFILE CARD CONTAINER */}
       {/* ========================================================================= */}
       <section className="relative z-10 mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl bg-[#131314]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden border border-zinc-200 shadow-2xl bg-white">
           {/* Left Column: Orange Panel */}
           <div className="lg:col-span-4 bg-brand-orange-bg p-8 sm:p-10 flex flex-col items-center text-center text-black">
             {/* Profile Photo */}
@@ -142,13 +142,13 @@ const AlumniDetailed = ({ alumni, onBack }) => {
           </div>
 
           {/* Right Column: Light Grey Panel */}
-          <div className="lg:col-span-8 bg-[#e5e5e7] p-8 sm:p-12 text-black flex flex-col justify-between gap-10">
+          <div className="lg:col-span-8 bg-zinc-50 p-8 sm:p-12 text-black flex flex-col justify-between gap-10">
             {/* Top metadata grid */}
             <div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pb-8 border-b border-zinc-300">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pb-8 border-b border-zinc-200">
                 {/* Metadatum 1 - Role */}
                 <div className="flex items-center gap-3.5">
-                  <div className="h-10 w-10 bg-transparent border border-zinc-400 rounded-lg flex items-center justify-center text-zinc-800">
+                  <div className="h-10 w-10 bg-transparent border border-zinc-350 rounded-lg flex items-center justify-center text-zinc-700">
                     <Briefcase className="h-5 w-5 stroke-[1.5]" />
                   </div>
                   <div>
@@ -163,7 +163,7 @@ const AlumniDetailed = ({ alumni, onBack }) => {
 
                 {/* Metadatum 2 - Company */}
                 <div className="flex items-center gap-3.5">
-                  <div className="h-10 w-10 bg-transparent border border-zinc-400 rounded-lg flex items-center justify-center text-zinc-800">
+                  <div className="h-10 w-10 bg-transparent border border-zinc-350 rounded-lg flex items-center justify-center text-zinc-700">
                     <Building2 className="h-5 w-5 stroke-[1.5]" />
                   </div>
                   <div>
@@ -178,7 +178,7 @@ const AlumniDetailed = ({ alumni, onBack }) => {
 
                 {/* Metadatum 3 - Domain */}
                 <div className="flex items-center gap-3.5">
-                  <div className="h-10 w-10 bg-transparent border border-zinc-400 rounded-lg flex items-center justify-center text-zinc-800">
+                  <div className="h-10 w-10 bg-transparent border border-zinc-350 rounded-lg flex items-center justify-center text-zinc-700">
                     <Code2 className="h-5 w-5 stroke-[1.5]" />
                   </div>
                   <div>
@@ -248,7 +248,7 @@ const AlumniDetailed = ({ alumni, onBack }) => {
               </div>
 
               {/* Bottom Projects link */}
-              <div className="flex justify-end pt-4 border-t border-zinc-300">
+              <div className="flex justify-end pt-4 border-t border-zinc-200">
                 <a
                   href="#"
                   className="inline-flex items-center gap-1.5 font-heading text-sm font-bold text-zinc-900 hover:text-brand-primary transition-colors"

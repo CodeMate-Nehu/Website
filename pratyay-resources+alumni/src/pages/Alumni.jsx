@@ -191,7 +191,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
   };
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-brand-dark text-white font-sans selection:bg-brand-primary selection:text-black">
+    <main className="relative min-h-screen overflow-x-hidden bg-brand-dark text-zinc-800 font-sans selection:bg-brand-primary selection:text-black">
       {/* Background Radial Glows */}
       <div className="orange-glow-top" aria-hidden="true" />
       <div className="orange-glow-bottom" aria-hidden="true" />
@@ -209,7 +209,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
             <h1 className="font-heading text-6xl font-extrabold tracking-tight text-brand-primary sm:text-7xl lg:text-8xl leading-none">
               connect
             </h1>
-            <p className="font-sans text-base sm:text-lg text-zinc-400 leading-relaxed max-w-xl">
+            <p className="font-sans text-base sm:text-lg text-zinc-650 leading-relaxed max-w-xl">
               SCET Alumni network connects you with the global network of
               professional resources, events and information. Explore the
               various paths our alumni have taken and connect with those who can
@@ -219,7 +219,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
 
           {/* Right Image Mockup */}
           <div className="lg:col-span-6 flex justify-center lg:justify-end">
-            <div className="relative p-2.5 bg-white rounded-2xl shadow-2xl shadow-brand-primary/5 max-w-[500px] w-full transform hover:scale-[1.02] transition-transform duration-300">
+            <div className="relative p-2.5 bg-white rounded-2xl border border-zinc-200/60 shadow-2xl shadow-brand-primary/5 max-w-[500px] w-full transform hover:scale-[1.02] transition-transform duration-300">
               <img
                 src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&h=400&q=80&sat=-100"
                 alt="SCET Alumni Network Group"
@@ -235,7 +235,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
       {/* 2. GET TO KNOW (STATS & TABS) SECTION */}
       {/* ========================================================================= */}
       <section className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-zinc-50 p-8 sm:p-12 md:p-16 text-zinc-900 shadow-xl">
+        <div className="rounded-3xl bg-zinc-50 p-8 sm:p-12 md:p-16 text-zinc-900 shadow-xl border border-zinc-200/50">
           {/* Top Row: Stats Header & Stat Box Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start pb-12 border-b border-zinc-200">
             {/* Intro text */}
@@ -246,7 +246,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
               <h2 className="font-heading text-4xl sm:text-5xl font-extrabold tracking-tight text-zinc-950">
                 get to know
               </h2>
-              <p className="font-sans text-sm sm:text-base text-zinc-600 leading-relaxed max-w-md">
+              <p className="font-sans text-sm sm:text-base text-zinc-650 leading-relaxed max-w-md">
                 Our alumni community is growing rapidly across the globe. Our
                 graduates are building the future at top-tier tech firms,
                 startups, and research institutes.
@@ -297,7 +297,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
                       className={`w-full text-left font-sans text-sm sm:text-base font-semibold py-3.5 px-5 rounded-xl transition-all duration-200 flex items-center justify-between group ${
                         isActive
                           ? "bg-white text-brand-primary shadow-md border-l-4 border-brand-primary"
-                          : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-950"
+                          : "text-zinc-650 hover:bg-zinc-100/80 hover:text-zinc-950"
                       }`}
                     >
                       {tab.label}
@@ -351,19 +351,19 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
       {/* 3. MEET THE CLUB ALUMNI SECTION */}
       {/* ========================================================================= */}
       <section className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-[#131314] border border-zinc-800/80 p-8 sm:p-12 md:p-16 shadow-2xl">
+        <div className="rounded-3xl bg-white border border-zinc-200/80 p-8 sm:p-12 md:p-16 shadow-2xl">
           {/* Header row */}
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-10 border-b border-zinc-800/60 mb-10">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-10 border-b border-zinc-200/60 mb-10">
             <div className="space-y-3 max-w-2xl">
               <div className="flex items-center gap-2">
                 <div className="h-5 w-5 bg-brand-primary/10 border border-brand-primary/30 rounded flex items-center justify-center">
                   <div className="h-2 w-2 rounded-sm bg-brand-primary" />
                 </div>
-                <span className="font-heading text-sm font-bold tracking-wider text-zinc-300 uppercase">
+                <span className="font-heading text-sm font-bold tracking-wider text-zinc-700 uppercase">
                   Meet the Club Alumni
                 </span>
               </div>
-              <p className="font-sans text-sm text-zinc-400 leading-relaxed">
+              <p className="font-sans text-sm text-zinc-500 leading-relaxed">
                 The alumni who built CodeMate. They work at different companies,
                 different roles. Check out their profiles to understand how they
                 can help you grow in your career, community, and opportunity.
@@ -389,7 +389,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
                 onClick={() => onSelectAlumni(alumnus)}
                 className="group flex flex-col gap-4 cursor-pointer"
               >
-                <div className="relative overflow-hidden rounded-2xl bg-zinc-900 border border-zinc-800 shadow-sm aspect-square">
+                <div className="relative overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-200/60 shadow-sm aspect-square">
                   <img
                     src={alumnus.image}
                     alt={`${alumnus.name} portrait`}
@@ -398,7 +398,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
                   />
                 </div>
                 <div>
-                  <h4 className="font-heading text-lg font-bold text-white leading-tight">
+                  <h4 className="font-heading text-lg font-bold text-zinc-900 leading-tight">
                     {alumnus.name}
                   </h4>
                   <p className="font-sans text-xs text-brand-primary mt-1">
@@ -415,28 +415,28 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
       {/* 4. ASK & GET ANSWERS SECTION */}
       {/* ========================================================================= */}
       <section className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-[#131314] border border-zinc-800/80 p-8 sm:p-12 md:p-16 shadow-2xl">
+        <div className="rounded-3xl bg-white border border-zinc-200/80 p-8 sm:p-12 md:p-16 shadow-2xl">
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
-            <h2 className="font-heading text-4xl sm:text-5xl font-extrabold tracking-tight text-white uppercase">
+            <h2 className="font-heading text-4xl sm:text-5xl font-extrabold tracking-tight text-zinc-900 uppercase">
               Ask & Get Answers
             </h2>
-            <p className="font-sans text-sm sm:text-base text-zinc-400 leading-relaxed">
+            <p className="font-sans text-sm sm:text-base text-zinc-500 leading-relaxed">
               Ask a question and get answers from our alumni network. You can
               also explore answers to questions asked by other students.
             </p>
           </div>
 
           {/* Interactive Chat Mockup Container */}
-          <div className="max-w-3xl mx-auto rounded-2xl border border-zinc-800 bg-[#0c0c0d] overflow-hidden shadow-2xl flex flex-col h-[480px]">
+          <div className="max-w-3xl mx-auto rounded-2xl border border-zinc-200 bg-zinc-50 overflow-hidden shadow-2xl flex flex-col h-[480px]">
             {/* macOS Styling Header Bar */}
-            <div className="bg-[#131314] border-b border-zinc-800/60 px-5 py-3 flex items-center justify-between">
+            <div className="bg-zinc-100 border-b border-zinc-200 px-5 py-3 flex items-center justify-between">
               <div className="flex items-center gap-1.5">
                 <div className="h-3 w-3 rounded-full bg-[#ff5f56]" />
                 <div className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
                 <div className="h-3 w-3 rounded-full bg-[#27c93f]" />
               </div>
-              <div className="text-xs font-semibold text-zinc-400 font-sans tracking-wide">
+              <div className="text-xs font-semibold text-zinc-650 font-sans tracking-wide">
                 CodeMate Alumni Assistant
               </div>
               <div className="w-12" /> {/* Spacer */}
@@ -456,7 +456,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
                       className={`h-8 w-8 rounded-full flex items-center justify-center shrink-0 text-xs font-bold ${
                         isAi
                           ? "bg-brand-primary text-black"
-                          : "bg-zinc-800 text-zinc-200"
+                          : "bg-zinc-200 text-zinc-700"
                       }`}
                     >
                       {isAi ? "CM" : "ME"}
@@ -466,7 +466,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
                     <div
                       className={`p-4 rounded-2xl leading-relaxed ${
                         isAi
-                          ? "bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-tl-sm"
+                          ? "bg-white border border-zinc-200 text-zinc-700 rounded-tl-sm"
                           : "bg-brand-primary text-black font-medium rounded-tr-sm shadow-md shadow-brand-primary/5"
                       }`}
                     >
@@ -482,17 +482,17 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
                   <div className="h-8 w-8 rounded-full bg-brand-primary text-black flex items-center justify-center shrink-0 text-xs font-bold">
                     CM
                   </div>
-                  <div className="bg-zinc-900 border border-zinc-800 p-4 rounded-2xl rounded-tl-sm flex items-center gap-1">
+                  <div className="bg-white border border-zinc-200 p-4 rounded-2xl rounded-tl-sm flex items-center gap-1">
                     <div
-                      className="h-1.5 w-1.5 bg-zinc-500 rounded-full animate-bounce"
+                      className="h-1.5 w-1.5 bg-zinc-400 rounded-full animate-bounce"
                       style={{ animationDelay: "0ms" }}
                     />
                     <div
-                      className="h-1.5 w-1.5 bg-zinc-500 rounded-full animate-bounce"
+                      className="h-1.5 w-1.5 bg-zinc-400 rounded-full animate-bounce"
                       style={{ animationDelay: "150ms" }}
                     />
                     <div
-                      className="h-1.5 w-1.5 bg-zinc-500 rounded-full animate-bounce"
+                      className="h-1.5 w-1.5 bg-zinc-400 rounded-full animate-bounce"
                       style={{ animationDelay: "300ms" }}
                     />
                   </div>
@@ -503,11 +503,11 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
             {/* Chat Input Footer Form */}
             <form
               onSubmit={handleSendMessage}
-              className="bg-[#131314] border-t border-zinc-800 px-4 py-3 flex items-center gap-3"
+              className="bg-zinc-100 border-t border-zinc-200 px-4 py-3 flex items-center gap-3"
             >
               <button
                 type="button"
-                className="text-zinc-500 hover:text-white transition-colors p-1"
+                className="text-zinc-500 hover:text-zinc-800 transition-colors p-1"
                 aria-label="Attach file"
               >
                 <Paperclip className="h-5 w-5" />
@@ -518,7 +518,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
                 value={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
                 placeholder="Ask a question (e.g. 'How to get into Google?', 'Higher studies abroad')"
-                className="flex-1 bg-zinc-900 border border-zinc-800/80 rounded-xl px-4 py-2.5 text-white placeholder-zinc-500 text-xs sm:text-sm focus:outline-none focus:border-brand-primary/60 font-sans"
+                className="flex-1 bg-white border border-zinc-200 rounded-xl px-4 py-2.5 text-zinc-800 placeholder-zinc-400 text-xs sm:text-sm focus:outline-none focus:border-brand-primary/60 font-sans"
               />
 
               <button
