@@ -4,6 +4,7 @@
  * Features: Back navigation button, categorized list grids matching the design,
  * custom card templates (light vs. highlighted orange, text detail layouts), and icon indicators.
  */
+import { useNavigate } from "react-router-dom";
 import {
   GraduationCap,
   Briefcase,
@@ -16,7 +17,8 @@ import {
 } from "lucide-react";
 import { GridPattern } from "@/components/ui/grid-pattern";
 
-const AlumniViewAll = ({ onSelectAlumni, onBack }) => {
+const AlumniViewAll = () => {
+  const navigate = useNavigate();
   // Categorized Alumni Groups matching the reference image categories
   const categories = [
     {
@@ -333,7 +335,7 @@ const AlumniViewAll = ({ onSelectAlumni, onBack }) => {
       <section className="relative z-10 mx-auto max-w-7xl px-4 pt-16 pb-6 sm:px-6 lg:px-8">
         {/* Back Link */}
         <button
-          onClick={onBack}
+          onClick={() => navigate(-1)}
           className="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-900 transition-colors duration-200 text-sm font-semibold mb-8 cursor-pointer"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -358,21 +360,6 @@ const AlumniViewAll = ({ onSelectAlumni, onBack }) => {
           <div key={cat.id} className="space-y-6">
             {/* Category Header */}
             <div className="relative py-8 px-6 overflow-hidden rounded-2xl border border-zinc-200/40 bg-zinc-50/20">
-              {cat.id === "leaders" && (
-                <GridPattern
-                  width={30}
-                  height={300000000}
-                  squares={[
-                    [4, 2],
-                    [5, 1],
-                    [8, 2],
-                    [5, 3],
-                    [5, 5],
-                    [10, 2],
-                  ]}
-                  className="[mask-image:radial-gradient(220px_circle_at_center,white,transparent)] opacity-85 inset-y-[-10%]"
-                />
-              )}
               <div className="relative z-10">
                 <span className="inline-block font-sans text-xs font-bold tracking-widest text-brand-primary uppercase">
                   {cat.tag}
@@ -397,7 +384,11 @@ const AlumniViewAll = ({ onSelectAlumni, onBack }) => {
                   return (
                     <div
                       key={idx}
-                      onClick={() => onSelectAlumni(alumnus)}
+                      onClick={() =>
+                        navigate("/alumniDetailed", {
+                          state: { alumni: alumnus },
+                        })
+                      }
                       className={`rounded-2xl p-6 flex flex-col items-center text-center cursor-pointer transition-all duration-300 hover:scale-[1.02] shadow-md border ${
                         isHighlighted
                           ? "bg-brand-orange-bg border-brand-primary/20 text-black shadow-brand-primary/10"
@@ -462,7 +453,11 @@ const AlumniViewAll = ({ onSelectAlumni, onBack }) => {
                   return (
                     <div
                       key={idx}
-                      onClick={() => onSelectAlumni(alumnus)}
+                      onClick={() =>
+                        navigate("/alumniDetailed", {
+                          state: { alumni: alumnus },
+                        })
+                      }
                       className="rounded-2xl p-6 bg-brand-orange-bg border border-brand-primary/20 text-black flex flex-col items-center text-center cursor-pointer transition-all duration-300 hover:scale-[1.02] shadow-md shadow-brand-primary/5"
                     >
                       {/* Avatar Circle Container */}
@@ -483,7 +478,11 @@ const AlumniViewAll = ({ onSelectAlumni, onBack }) => {
                 return (
                   <div
                     key={idx}
-                    onClick={() => onSelectAlumni(alumnus)}
+                    onClick={() =>
+                      navigate("/alumniDetailed", {
+                        state: { alumni: alumnus },
+                      })
+                    }
                     className="rounded-2xl p-6 bg-zinc-50 border border-zinc-200/80 text-black flex flex-col items-center text-center cursor-pointer transition-all duration-300 hover:scale-[1.02] shadow-sm"
                   >
                     {/* Avatar Circle Container */}

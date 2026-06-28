@@ -4,6 +4,7 @@
  * Features: Stat indicators, split card layout (orange left, off-white right),
  * detailed metadata, achievements/metrics grid, and "Back to Alumni" navigation.
  */
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   Briefcase,
   Building2,
@@ -18,8 +19,24 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const AlumniDetailed = ({ alumni, onBack }) => {
-  if (!alumni) return null;
+const AlumniDetailed = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const alumni = location.state?.alumni;
+
+  if (!alumni) {
+    return (
+      <div className="min-h-screen bg-brand-dark flex flex-col items-center justify-center text-zinc-900">
+        <p className="text-lg font-bold mb-4 text-white">No alumnus selected.</p>
+        <button
+          onClick={() => navigate("/Alumni")}
+          className="bg-brand-primary text-black font-bold px-6 py-2.5 rounded-full cursor-pointer"
+        >
+          Go to Alumni Portal
+        </button>
+      </div>
+    );
+  }
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-brand-dark text-zinc-800 font-sans selection:bg-brand-primary selection:text-black">
@@ -32,7 +49,7 @@ const AlumniDetailed = ({ alumni, onBack }) => {
       <section className="relative z-10 mx-auto max-w-7xl px-4 pt-16 pb-12 sm:px-6 lg:px-8">
         {/* Back Link */}
         <button
-          onClick={onBack}
+          onClick={() => navigate(-1)}
           className="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-900 transition-colors duration-200 text-sm font-semibold mb-8 cursor-pointer"
         >
           <ArrowLeft className="h-4 w-4" />

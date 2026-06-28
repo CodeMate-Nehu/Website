@@ -6,6 +6,7 @@
  * interactive Ask & Get Answers chatbot mockup with real stateful answers.
  */
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Briefcase,
   GraduationCap,
@@ -80,7 +81,8 @@ const alumniData = [
   },
 ];
 
-const Alumni = ({ onSelectAlumni, onViewAll }) => {
+const Alumni = () => {
+  const navigate = useNavigate();
   // Tab State for "Get to Know" section
   const [activeTab, setActiveTab] = useState("tech");
 
@@ -335,7 +337,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
 
                 <div className="mt-8 relative z-10">
                   <button
-                    onClick={onViewAll}
+                    onClick={() => navigate("/alumniViewAll")}
                     className="bg-black text-white hover:bg-zinc-900 transition-colors duration-200 text-xs font-bold px-6 py-2.5 rounded-full shadow-md cursor-pointer"
                   >
                     View all
@@ -373,7 +375,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
               <Button
                 variant="light"
                 size="sm"
-                onClick={onViewAll}
+                onClick={() => navigate("/alumniViewAll")}
                 icon={<ArrowRight className="h-4 w-4" />}
               >
                 View All
@@ -386,7 +388,9 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
             {alumniData.map((alumnus, idx) => (
               <div
                 key={idx}
-                onClick={() => onSelectAlumni(alumnus)}
+                onClick={() =>
+                  navigate("/alumniDetailed", { state: { alumni: alumnus } })
+                }
                 className="group flex flex-col gap-4 cursor-pointer"
               >
                 <div className="relative overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-200/60 shadow-sm aspect-square">
