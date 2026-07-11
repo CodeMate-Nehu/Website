@@ -12,7 +12,6 @@ import {
   Rocket,
   Atom,
   Share2,
-  Mail,
   ArrowLeft,
 } from "lucide-react";
 import { GridPattern } from "@/components/ui/grid-pattern";
@@ -121,11 +120,7 @@ const AlumniViewAll = () => {
               {cat.alumni.map((alumnus, idx) => (
                 <div
                   key={idx}
-                  onClick={() =>
-                    navigate("/alumniDetailed", {
-                      state: { alumni: alumnus },
-                    })
-                  }
+                  onClick={() => navigate(`/AlumniDetailed/${alumnus.id}`)}
                   className="rounded-2xl p-6 flex flex-col items-center text-center cursor-pointer transition-all duration-300 hover:scale-[1.02] shadow-md border bg-zinc-50 border-zinc-200/80 text-black"
                 >
                   <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 mb-4 border-zinc-300">
@@ -153,15 +148,28 @@ const AlumniViewAll = () => {
                     >
                       <Share2 className="h-3.5 w-3.5" />
                     </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
-                      className="p-2 rounded-full border transition-colors border-zinc-300 hover:bg-zinc-200 text-zinc-700"
-                      aria-label="Email"
-                    >
-                      <Mail className="h-3.5 w-3.5" />
-                    </button>
+                    {alumnus.linkedin && (
+                      <a
+                        href={alumnus.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                        }}
+                        className="p-2 rounded-full border transition-colors border-zinc-300 hover:bg-zinc-200 text-zinc-700 flex items-center justify-center"
+                        aria-label="LinkedIn"
+                      >
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                          <circle cx="4" cy="4" r="2" />
+                        </svg>
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}

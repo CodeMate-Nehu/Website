@@ -72,10 +72,10 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/alumni" element={<Alumni />} />
-          <Route path="/alumniDetailed" element={<AlumniDetailed />} />
-          <Route path="/alumniViewAll" element={<AlumniViewAll />} />
-          <Route path="/resources" element={<Resources />} />
+          <Route path="/Alumni" element={<Alumni />} />
+          <Route path="/AlumniDetailed/:id" element={<AlumniDetailed />} />
+          <Route path="/AlumniViewAll" element={<AlumniViewAll />} />
+          <Route path="/Resources" element={<Resources />} />
         </Routes>
       </div>
       <Footer />
