@@ -7,6 +7,7 @@
  */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { placementList } from "../components/data/alumniData";
 import {
   Briefcase,
   GraduationCap,
@@ -22,64 +23,10 @@ import {
 import Button from "../components/Button";
 
 // Grayscale portraits and mock data for detailed alumni profiles
-const alumniData = [
-  {
-    name: "Rahul Mishra",
-    role: "Software Engineer",
-    company: "Google",
-    domain: "Product Engineering",
-    batch: "BTECH IT 2021-25",
-    image:
-      "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100",
-    expertise: ["Full Stack", "System Design", "MongoDB", "React", "Node.js"],
-    internships: 3,
-    papers: 1,
-    openSource: "Open Source Contributor",
-    bio: "Software Engineer at Google. Focused heavily on high-performance web systems and full-stack development. I enjoy sharing my experiences and helping students prepare for tech roles.",
-  },
-  {
-    name: "Ananya Sen",
-    role: "Product Manager",
-    company: "Meta",
-    domain: "Product Design",
-    batch: "BTECH IT 2020-24",
-    image:
-      "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100",
-    expertise: ["Product Growth", "Data Analytics", "Agile", "User Experience"],
-    internships: 2,
-    papers: 0,
-    openSource: "Community Leader",
-    bio: "Product Manager at Meta. Helping shape cross-functional projects, from initial prototype to global scale releases. Reach out if you're interested in PM career paths.",
-  },
-  {
-    name: "Vikram Singh",
-    role: "Research Fellow",
-    company: "MIT",
-    domain: "Computer Vision",
-    batch: "BTECH CSE 2019-23",
-    image:
-      "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100",
-    expertise: ["Machine Learning", "PyTorch", "Python", "Computer Vision"],
-    internships: 4,
-    papers: 3,
-    openSource: "Active Academic",
-    bio: "Research Fellow at MIT. Exploring neural network architectures for computer vision applications. Feel free to connect to discuss academia, MS/PhD applications, or research papers.",
-  },
-  {
-    name: "Priya Sharma",
-    role: "Co-founder",
-    company: "Decent",
-    domain: "Blockchains & Web3",
-    batch: "BTECH IT 2018-22",
-    image:
-      "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100",
-    expertise: ["Solidity", "TypeScript", "Cryptography", "Product Pitching"],
-    internships: 2,
-    papers: 1,
-    openSource: "Web3 Contributor",
-    bio: "Co-founder at Decent. Entrepreneur building cryptographic primitives and distributed ledger tech. Happy to guide aspiring founders on MVP creation and fundraising.",
-  },
-];
+const alumniData = placementList.slice(0, 4).map(al => ({
+  ...al,
+  role: al.currentRole
+}));
 
 const Alumni = () => {
   const navigate = useNavigate();
@@ -375,7 +322,7 @@ const Alumni = () => {
               <Button
                 variant="light"
                 size="sm"
-                onClick={() => navigate("/alumniViewAll")}
+                onClick={() => navigate("/AlumniViewAll")}
                 icon={<ArrowRight className="h-4 w-4" />}
               >
                 View All
@@ -388,9 +335,7 @@ const Alumni = () => {
             {alumniData.map((alumnus, idx) => (
               <div
                 key={idx}
-                onClick={() =>
-                  navigate("/alumniDetailed", { state: { alumni: alumnus } })
-                }
+                onClick={() => navigate(`/AlumniDetailed/${alumnus.id}`)}
                 className="group flex flex-col gap-4 cursor-pointer"
               >
                 <div className="relative overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-200/60 shadow-sm aspect-square">

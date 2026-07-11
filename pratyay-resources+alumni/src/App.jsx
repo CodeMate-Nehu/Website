@@ -63,25 +63,13 @@ function App() {
           logoUrl={Logo}
           accentColor="#f37f30"
         />
-        {currentPage === 'resources' && <Resources />}
-        {currentPage === 'alumni' && (
-          <Alumni 
-            onSelectAlumni={handleSelectAlumni} 
-            onViewAll={() => setCurrentPage('alumni-view-all')}
-          />
-        )}
-        {currentPage === 'alumni-detailed' && (
-          <AlumniDetailed 
-            alumni={selectedAlumni} 
-            onBack={() => setCurrentPage('alumni')} 
-          />
-        )}
-        {currentPage === 'alumni-view-all' && (
-          <AlumniViewAll 
-            onSelectAlumni={handleSelectAlumni}
-            onBack={() => setCurrentPage('alumni')}
-          />
-        )}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/alumni" element={<Alumni />} />
+          <Route path="/alumniDetailed" element={<AlumniDetailed />} />
+          <Route path="/alumniViewAll" element={<AlumniViewAll />} />
+          <Route path="/resources" element={<Resources />} />
+        </Routes>
       </div>
       <Footer />
     </div>
