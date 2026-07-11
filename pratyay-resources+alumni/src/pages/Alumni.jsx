@@ -6,6 +6,7 @@
  * interactive Ask & Get Answers chatbot mockup with real stateful answers.
  */
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Briefcase,
   GraduationCap,
@@ -29,7 +30,7 @@ const alumniData = [
     domain: "Product Engineering",
     batch: "BTECH IT 2021-25",
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&h=300&q=80&sat=-100",
+      "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100",
     expertise: ["Full Stack", "System Design", "MongoDB", "React", "Node.js"],
     internships: 3,
     papers: 1,
@@ -43,7 +44,7 @@ const alumniData = [
     domain: "Product Design",
     batch: "BTECH IT 2020-24",
     image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&h=300&q=80&sat=-100",
+      "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100",
     expertise: ["Product Growth", "Data Analytics", "Agile", "User Experience"],
     internships: 2,
     papers: 0,
@@ -57,7 +58,7 @@ const alumniData = [
     domain: "Computer Vision",
     batch: "BTECH CSE 2019-23",
     image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&h=300&q=80&sat=-100",
+      "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100",
     expertise: ["Machine Learning", "PyTorch", "Python", "Computer Vision"],
     internships: 4,
     papers: 3,
@@ -71,7 +72,7 @@ const alumniData = [
     domain: "Blockchains & Web3",
     batch: "BTECH IT 2018-22",
     image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=300&h=300&q=80&sat=-100",
+      "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100",
     expertise: ["Solidity", "TypeScript", "Cryptography", "Product Pitching"],
     internships: 2,
     papers: 1,
@@ -80,7 +81,8 @@ const alumniData = [
   },
 ];
 
-const Alumni = ({ onSelectAlumni, onViewAll }) => {
+const Alumni = () => {
+  const navigate = useNavigate();
   // Tab State for "Get to Know" section
   const [activeTab, setActiveTab] = useState("tech");
 
@@ -335,7 +337,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
 
                 <div className="mt-8 relative z-10">
                   <button
-                    onClick={onViewAll}
+                    onClick={() => navigate("/alumniViewAll")}
                     className="bg-black text-white hover:bg-zinc-900 transition-colors duration-200 text-xs font-bold px-6 py-2.5 rounded-full shadow-md cursor-pointer"
                   >
                     View all
@@ -373,7 +375,7 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
               <Button
                 variant="light"
                 size="sm"
-                onClick={onViewAll}
+                onClick={() => navigate("/alumniViewAll")}
                 icon={<ArrowRight className="h-4 w-4" />}
               >
                 View All
@@ -386,7 +388,9 @@ const Alumni = ({ onSelectAlumni, onViewAll }) => {
             {alumniData.map((alumnus, idx) => (
               <div
                 key={idx}
-                onClick={() => onSelectAlumni(alumnus)}
+                onClick={() =>
+                  navigate("/alumniDetailed", { state: { alumni: alumnus } })
+                }
                 className="group flex flex-col gap-4 cursor-pointer"
               >
                 <div className="relative overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-200/60 shadow-sm aspect-square">
