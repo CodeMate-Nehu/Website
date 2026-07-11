@@ -200,6 +200,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 600);
                 });
             });
+
+            // Logo smooth scroll / home navigation
+            const headerLogo = document.querySelector('.header-logo');
+            if (headerLogo) {
+                headerLogo.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (isMenuOpen) {
+                        closeMenu();
+                    }
+                    setTimeout(() => {
+                        const target = document.getElementById('home');
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            window.location.href = 'index.html';
+                        }
+                    }, isMenuOpen ? 600 : 0);
+                });
+            }
+
+            const logoHoverZone = document.querySelector('.logo-hover-zone');
+            if (logoHoverZone && headerLogo) {
+                logoHoverZone.addEventListener('click', function() {
+                    headerLogo.click();
+                });
+            }
         }
 
         // ── 4. HERO SECTION (Tagline Morph, 3D Scroll, Cursor Reveal) ──

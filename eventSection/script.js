@@ -167,6 +167,27 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 600);
         });
       });
+
+      // Logo click behavior (navigate to homepage since we are in eventSection)
+      const headerLogo = document.querySelector('.header-logo');
+      if (headerLogo) {
+        headerLogo.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (isMenuOpen) {
+            closeMenu();
+          }
+          setTimeout(() => {
+            window.location.href = '../index.html';
+          }, isMenuOpen ? 600 : 0);
+        });
+      }
+
+      const logoHoverZone = document.querySelector('.logo-hover-zone');
+      if (logoHoverZone && headerLogo) {
+        logoHoverZone.addEventListener('click', function() {
+          headerLogo.click();
+        });
+      }
     }
   }
 
