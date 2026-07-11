@@ -4,12 +4,11 @@
  * Features: Stat indicators, split card layout (orange left, off-white right),
  * detailed metadata, achievements/metrics grid, and "Back to Alumni" navigation.
  */
-import { useLocation, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   Briefcase,
   Building2,
   Code2,
-  Mail,
   Share2,
   Award,
   FileText,
@@ -18,16 +17,37 @@ import {
   ArrowLeft,
   ArrowRight,
 } from "lucide-react";
+import {
+  placementList,
+  higherStudiesIndiaList,
+  abroadList,
+  entrepreneurList,
+} from "../components/data/alumniData";
 
 const AlumniDetailed = () => {
-  const location = useLocation();
+  const { id } = useParams();
   const navigate = useNavigate();
-  const alumni = location.state?.alumni;
 
-  if (!alumni) {
+  let found = placementList.find((al) => al.id === id);
+  let category = found ? "placement" : null;
+
+  if (!found) {
+    found = higherStudiesIndiaList.find((al) => al.id === id);
+    category = found ? "higherStudiesIndia" : null;
+  }
+  if (!found) {
+    found = abroadList.find((al) => al.id === id);
+    category = found ? "abroad" : null;
+  }
+  if (!found) {
+    found = entrepreneurList.find((al) => al.id === id);
+    category = found ? "entrepreneur" : null;
+  }
+
+  if (!found) {
     return (
       <div className="min-h-screen bg-brand-dark flex flex-col items-center justify-center text-zinc-900">
-        <p className="text-lg font-bold mb-4 text-white">No alumnus selected.</p>
+        <p className="text-lg font-bold mb-4 text-white">Alumnus not found.</p>
         <button
           onClick={() => navigate("/Alumni")}
           className="bg-brand-primary text-black font-bold px-6 py-2.5 rounded-full cursor-pointer"
@@ -37,6 +57,37 @@ const AlumniDetailed = () => {
       </div>
     );
   }
+
+  let roleText = "missing data";
+  let companyText = "missing data";
+
+  if (category === "placement") {
+    roleText = found.currentRole || "missing data";
+    companyText = found.company || "missing data";
+  } else if (category === "higherStudiesIndia" || category === "abroad") {
+    roleText = found.program || "missing data";
+    companyText = found.institution || "missing data";
+  } else if (category === "entrepreneur") {
+    roleText = found.role || "missing data";
+    companyText = found.company || "missing data";
+  }
+
+  const alumni = {
+    name: found.name || "missing data",
+    role: roleText,
+    company: companyText,
+    batch: found.engineeringDegree || "missing data",
+    image: found.image || "missing data",
+    bio: found.bio || "missing data",
+    domain: found.domain || "missing data",
+    openSource: found.openSource || "missing data",
+    internships: found.internships !== undefined ? found.internships : "missing data",
+    papers: found.papers !== undefined ? found.papers : "missing data",
+    expertise: (found.expertise && Array.isArray(found.expertise) && found.expertise.length > 0)
+      ? found.expertise
+      : ["missing data"],
+    linkedin: found.linkedin
+  };
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-brand-dark text-zinc-800 font-sans selection:bg-brand-primary selection:text-black">
@@ -125,12 +176,25 @@ const AlumniDetailed = () => {
               >
                 <Share2 className="h-4 w-4 stroke-[2]" />
               </button>
-              <button
-                className="bg-transparent hover:bg-black/10 border border-black/20 text-black p-3 rounded-full hover:scale-105 transition-all duration-200 cursor-pointer"
-                aria-label="Send email"
-              >
-                <Mail className="h-4 w-4 stroke-[2]" />
-              </button>
+              {alumni.linkedin && (
+                <a
+                  href={alumni.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-transparent hover:bg-black/10 border border-black/20 text-black p-3 rounded-full hover:scale-105 transition-all duration-200 flex items-center justify-center cursor-pointer"
+                  aria-label="LinkedIn profile"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </a>
+              )}
             </div>
 
             {/* Expertise grid */}
