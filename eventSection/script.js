@@ -1,4 +1,319 @@
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+document.addEventListener('DOMContentLoaded', () => {
+  // ── 1. CORE SETUP & COMPONENT LOADING ──
+  const components = [
+    { id: 'navbar-container', path: '../components/navbar.html' },
+    { id: 'footer-container', path: '../components/footer.html' },
+    { id: 'chatbot-container', path: '../components/chatbot.html' }
+  ];
+
+  async function loadComponent(component) {
+    try {
+      const response = await fetch(component.path);
+      if (!response.ok) throw new Error(`Failed to load ${component.path}`);
+      let html = await response.text();
+      // Adjust relative logo/image paths for subfolder structure
+      html = html.replace(/src="images\//g, 'src="../images/');
+      document.getElementById(component.id).innerHTML = html;
+    } catch (error) {
+      console.error("Component Load Error:", error);
+    }
+  }
+
+  function initNavbar() {
+    // Global scroll effects (Header & Logo)
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.site-header');
+      if (header) {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+
+        if (window.scrollY > window.innerHeight * 0.8) {
+          document.body.classList.add('scrolled-past-hero');
+        } else {
+          document.body.classList.remove('scrolled-past-hero');
+        }
+      }
+    });
+
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+    const navOverlay = document.getElementById('navOverlay');
+    const navOverlayBg = document.getElementById('navOverlayBg');
+    let isMenuOpen = false;
+
+    if (menuToggleBtn && navOverlay && typeof gsap !== 'undefined') {
+      const mainEase = (() => {
+        try {
+          if (typeof CustomEase !== 'undefined') {
+            gsap.registerPlugin(CustomEase);
+            CustomEase.create("main", "0.65, 0.01, 0.05, 0.99");
+            return "main";
+          }
+        } catch (e) { }
+        return "power2.out";
+      })();
+      gsap.defaults({ ease: mainEase, duration: 0.7 });
+
+      const menuPanel = navOverlay.querySelector('.nav-menu-panel');
+      const overlayBg = navOverlay.querySelector('.nav-overlay-bg');
+      const backdropLayers = Array.from(navOverlay.querySelectorAll('.nav-backdrop-layer'));
+      const menuLinks = Array.from(navOverlay.querySelectorAll('.nav-menu-link'));
+      const btnLabels = Array.from(menuToggleBtn.querySelectorAll('.menu-btn-label'));
+      const btnIcon = menuToggleBtn.querySelector('.menu-btn-icon');
+
+      function openMenu() {
+        if (!menuPanel || !overlayBg) return;
+        isMenuOpen = true;
+        navOverlay.setAttribute('data-nav', 'open');
+        document.body.style.overflow = 'hidden';
+        gsap.killTweensOf(menuPanel);
+        gsap.killTweensOf(overlayBg);
+        if (backdropLayers.length) gsap.killTweensOf(backdropLayers);
+        if (menuLinks.length) gsap.killTweensOf(menuLinks);
+        gsap.set(overlayBg, { autoAlpha: 0 });
+        gsap.set(menuPanel, { xPercent: 100, x: 0, visibility: 'visible' });
+        if (backdropLayers.length) gsap.set(backdropLayers, { xPercent: 101 });
+        if (menuLinks.length) gsap.set(menuLinks, { yPercent: 140, rotate: 10, opacity: 0 });
+        const tl = gsap.timeline();
+        tl.to(btnLabels, { yPercent: -100, stagger: 0.1, duration: 0.4 }, 0)
+          .to(btnIcon, { rotate: 315, duration: 0.4 }, 0)
+          .to(overlayBg, { autoAlpha: 1, duration: 0.4 }, 0)
+          .to(menuPanel, { xPercent: 0, duration: 0.6, ease: mainEase }, 0);
+        if (backdropLayers.length) {
+          tl.to(backdropLayers, { xPercent: 0, stagger: 0.1, duration: 0.6, ease: mainEase }, 0.1);
+        }
+        if (menuLinks.length) {
+          tl.to(menuLinks, { yPercent: 0, rotate: 0, opacity: 1, stagger: 0.05, duration: 0.5, ease: "power2.out" }, 0.3);
+        }
+      }
+
+      function closeMenu() {
+        if (!menuPanel || !overlayBg) return;
+        isMenuOpen = false;
+        navOverlay.setAttribute('data-nav', 'closed');
+        document.body.style.overflow = '';
+        const tl = gsap.timeline({
+          onComplete: () => {
+            gsap.set([menuPanel, overlayBg, ...backdropLayers, ...menuLinks], { clearProps: 'all' });
+          }
+        });
+        tl.to(overlayBg, { autoAlpha: 0, duration: 0.4 }, 0);
+        if (backdropLayers.length) {
+          tl.to(backdropLayers, { xPercent: 101, stagger: 0.05, duration: 0.4 }, 0);
+        }
+        tl.to(menuPanel, { xPercent: 100, duration: 0.5, ease: "power2.in" }, 0)
+          .to(btnLabels, { yPercent: 0, duration: 0.4 }, 0)
+          .to(btnIcon, { rotate: 0, duration: 0.4 }, 0);
+      }
+
+      menuToggleBtn.addEventListener('click', () => {
+        if (isMenuOpen) closeMenu();
+        else openMenu();
+      });
+
+      if (navOverlayBg) {
+        navOverlayBg.addEventListener('click', closeMenu);
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isMenuOpen) closeMenu();
+      });
+
+      // Shape hover effects
+      const menuItems = Array.from(navOverlay.querySelectorAll('.nav-menu-item[data-shape]'));
+      const shapesContainer = navOverlay.querySelector('.nav-ambient-shapes');
+
+      menuItems.forEach((item) => {
+        const shapeIndex = item.getAttribute('data-shape');
+        const shape = shapesContainer ? shapesContainer.querySelector(`.nav-bg-shape-${shapeIndex}`) : null;
+        if (!shape) return;
+        const shapeEls = Array.from(shape.querySelectorAll('.nav-shape-el'));
+        if (!shapeEls.length) return;
+        item.addEventListener('mouseenter', () => {
+          if (shapesContainer) {
+            shapesContainer.querySelectorAll('.nav-bg-shape').forEach(s => s.classList.remove('active'));
+          }
+          shape.classList.add('active');
+          gsap.fromTo(shapeEls,
+            { scale: 0.5, opacity: 0, rotation: -10, transformOrigin: "50% 50%" },
+            { scale: 1, opacity: 1, rotation: 0, duration: 0.6, stagger: 0.08, ease: 'back.out(1.7)', overwrite: 'auto' }
+          );
+        });
+        item.addEventListener('mouseleave', () => {
+          gsap.to(shapeEls, {
+            scale: 0.8, opacity: 0, duration: 0.3, ease: 'power2.in',
+            onComplete: () => shape.classList.remove('active'),
+            overwrite: 'auto'
+          });
+        });
+      });
+
+      menuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          closeMenu();
+          setTimeout(() => {
+            const targetId = href.substring(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            } else {
+              window.location.href = `../index.html${href}`;
+            }
+          }, 600);
+        });
+      });
+    }
+  }
+
+  function initRevealAnimations() {
+    const observerOptions = {
+      threshold: 0.05,
+      rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        } else {
+          entry.target.classList.remove('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    const revealables = document.querySelectorAll('.reveal, .section, .resource-card, .event-card, .stat-card');
+    revealables.forEach(el => {
+      if (!el.classList.contains('reveal')) {
+        el.classList.add('reveal');
+      }
+      observer.observe(el);
+    });
+  }
+
+  async function init() {
+    // Load all components
+    await Promise.all(components.map(loadComponent));
+
+    // Initialize Lucide icons for loaded components
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
+    initNavbar();
+    initRevealAnimations();
+
+    // ── 10. CHATBOT LOGIC ──
+        function initChatbot() {
+            const toggleBtn = document.getElementById('chatbot-toggle');
+            const closeBtn = document.getElementById('chatbot-close');
+            const chatWindow = document.getElementById('chatbot-window');
+            const chatForm = document.getElementById('chatbot-form');
+            const chatInput = document.getElementById('chatbot-input');
+            const messagesContainer = document.getElementById('chatbot-messages');
+
+            if (!toggleBtn || !chatWindow) return;
+
+            toggleBtn.addEventListener('click', () => {
+                chatWindow.classList.toggle('hidden');
+                if (!chatWindow.classList.contains('hidden')) {
+                    chatInput.focus();
+                }
+            });
+
+            closeBtn.addEventListener('click', () => {
+                chatWindow.classList.add('hidden');
+            });
+
+            function addMessage(text, isUser) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+                
+                let contentHTML;
+                if (isUser) {
+                    contentHTML = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                } else {
+                    if (typeof marked !== 'undefined') {
+                        contentHTML = marked.parse(text);
+                    } else {
+                        contentHTML = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                    }
+                }
+                
+                msgDiv.innerHTML = `<div class="message-content">${contentHTML}</div>`;
+                messagesContainer.appendChild(msgDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            if (chatForm) {
+                chatForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const message = chatInput.value.trim();
+                    if (!message) return;
+
+                    addMessage(message, true);
+                    chatInput.value = '';
+                    
+                    // Show typing indicator
+                    const typingId = 'typing-' + Date.now();
+                    const typingDiv = document.createElement('div');
+                    typingDiv.id = typingId;
+                    typingDiv.className = 'message bot-message';
+                    typingDiv.innerHTML = '<div class="message-content typing-indicator"><span>.</span><span>.</span><span>.</span></div>';
+                    messagesContainer.appendChild(typingDiv);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                    try {
+                        const response = await fetch('/api/chat', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ message })
+                        });
+                        
+                        const data = await response.json();
+                        document.getElementById(typingId).remove();
+                        
+                        if (response.ok) {
+                            addMessage(data.answer, false);
+                        } else {
+                            addMessage(data.error || "Sorry, something went wrong.", false);
+                        }
+                    } catch (err) {
+                        const t = document.getElementById(typingId);
+                        if(t) t.remove();
+                        addMessage("Connection error. Please try again.", false);
+                    }
+                });
+            }
+        }
+        initChatbot();
+
+        // ── 11. ASSETS PRELOADING ──
+        function preloadAssets() {
+            const imagesToPreload = [];
+            if (typeof memberGroups !== 'undefined') {
+                Object.values(memberGroups).forEach(group => {
+                    group.members.forEach(member => {
+                        if (member.imageSrc) imagesToPreload.push(member.imageSrc);
+                        if (member.thumbnailSrc) imagesToPreload.push(member.thumbnailSrc);
+                    });
+                });
+            }
+            document.querySelectorAll('img').forEach(img => { if (img.src) imagesToPreload.push(img.src); });
+            const uniqueImages = [...new Set(imagesToPreload.filter(src => src && !src.startsWith('data:')))];
+            uniqueImages.forEach(src => { const img = new Image(); img.src = src; });
+            document.querySelectorAll('video').forEach(video => { video.preload = 'auto'; });
+            console.log(`[Preload] ${uniqueImages.length} images preloaded.`);
+        }
+        setTimeout(preloadAssets, 1000);
+    }
+
+    init();
+});
 
 const EVENTS = [
   {
@@ -218,12 +533,6 @@ EVENTS.forEach((ev) => {
 });
 
 window.addEventListener("scroll", () => {
-  const el = document.documentElement;
-  document.getElementById("progress-bar").style.width =
-    (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100 + "%";
-});
-
-window.addEventListener("scroll", () => {
   const sg = document.getElementById("hero-grid");
   if (sg) sg.style.transform = `translateY(${window.scrollY * 0.15}px)`;
 });
@@ -345,11 +654,11 @@ function openEvent(id) {
     .join("");
   const techHTML = ev.tech.length
     ? ev.tech
-        .map(
-          (t) =>
-            `<span class="tech-tag" style="color:${ev.color};border-color:${ev.color}40;background:${ev.color}12">${t}</span>`,
-        )
-        .join("")
+      .map(
+        (t) =>
+          `<span class="tech-tag" style="color:${ev.color};border-color:${ev.color}40;background:${ev.color}12">${t}</span>`,
+      )
+      .join("")
     : `<span style="color:#aaa;font-size:13px">—</span>`;
   const galleryHTML = ev.gallery
     .map(

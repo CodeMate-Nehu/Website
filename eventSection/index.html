@@ -8,7 +8,11 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
       defer
@@ -24,7 +28,7 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div id="progress-bar"></div>
+    <div id="navbar-container"></div>
     <div id="nav-dots"></div>
 
     <!-- HERO -->
@@ -117,48 +121,7 @@
     </section>
 
     <!-- FOOTER -->
-    <section id="footer-cta">
-      <div class="grid-bg">
-        <svg id="footer-grid" xmlns="http://www.w3.org/2000/svg"></svg>
-      </div>
-      <div
-        class="orb"
-        style="
-          width: 600px;
-          height: 300px;
-          background: rgba(255, 107, 0, 0.05);
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        "
-      ></div>
-      <div
-        style="position: relative; z-index: 1; max-width: 700px; margin: 0 auto"
-      >
-        <div class="footer-badge fade-up">
-          <span class="dot"></span>
-          <span class="label">NEHU · CodeMate</span>
-        </div>
-        <h2 class="fade-up">
-          Want to be part of<br /><span>the next big event?</span>
-        </h2>
-        <p class="fade-up">
-          Join hundreds of developers, designers, and dreamers building the
-          future together at NEHU.
-        </p>
-        <div class="fade-up">
-          <button
-            class="btn-primary"
-            style="font-size: 16px; padding: 16px 44px"
-            onclick="alert('Welcome to CodeMate! 🚀')"
-          >
-            Join CodeMate →
-          </button>
-        </div>
-        <p class="footer-copy">
-          © 2025 CodeMate · NEHU · Build. Connect. Grow.
-        </p>
-      </div>
-    </section>
+    <div id="footer-container"></div>
+    <div id="chatbot-container"></div>
   </body>
 </html>

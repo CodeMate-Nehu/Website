@@ -12,9 +12,9 @@
   --border: #e8e8e8;
   --radius: 20px;
 }
-html {
+/* html {
   scroll-behavior: smooth;
-}
+} */
 body {
   font-family: "Outfit", sans-serif;
   background: var(--bg);
