@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Resources from "./pages/Resources";
 import Alumni from "./pages/Alumni";
 import AlumniViewAll from "./pages/AlumniViewAll";
+
 import Footer from "./components/Footer";
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
           <Route path="/Alumni" element={<Alumni />} />
           <Route path="/AlumniViewAll" element={<AlumniViewAll />} />
           <Route path="/Resources" element={<Resources />} />
+          {/* <Route path="/Resources" element={<Resources />} /> */}
         </Routes>
       </div>
       <Footer />
