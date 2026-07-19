@@ -6,7 +6,7 @@ export const placementList = [
     engineeringDegree: "B.Tech IT (2018-2022)",
     currentRole: "Software Developer",
     company: "Standard Chartered Bank",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/Kriti_Jhajpg.jpg",
   },
   {
     id: "37e90030-b08e-43ac-be1e-e04eabcc4bc7",
@@ -15,7 +15,7 @@ export const placementList = [
     engineeringDegree: "B.Tech IT (2017-2021)",
     currentRole: "Senior Data Scientist",
     company: "PwC",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/Manjit-royjpg.jpg",
   },
   {
     id: "d3e4fbda-caa2-4d94-b2ad-f005b6bbe310",
@@ -24,7 +24,7 @@ export const placementList = [
     engineeringDegree: "B.Tech IT (2013-2017)",
     currentRole: "Lead Consultant",
     company: "Genpact",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/Alfazjpg.jpg",
   },
   {
     id: "1695100c-fb6b-45b4-a8a6-bffad0a1366f",
@@ -33,7 +33,7 @@ export const placementList = [
     engineeringDegree: "B.Tech IT (2021-2025)",
     currentRole: "Software Engineer (GenAI/LLM)",
     company: "Pursuit Software",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/Neha-nathjpg.jpg",
   },
   {
     id: "3ab9cfb0-8a2e-4782-bf4c-1cad343d2408",
@@ -42,7 +42,7 @@ export const placementList = [
     engineeringDegree: "B.Tech IT (2020-2024)",
     currentRole: "Product Manager",
     company: "YouTube",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/Monsurpng.png",
   },
   {
     id: "da19823f-d3e4-4f36-88af-c310ff550baa",
@@ -51,7 +51,7 @@ export const placementList = [
     engineeringDegree: "B.Tech",
     currentRole: "Technical Lead",
     company: "Tech Mahindra",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/Rijumanijpg.jpg",
   },
   {
     id: "a670393d-f87b-419b-8654-cd88dbc7e03f",
@@ -60,7 +60,7 @@ export const placementList = [
     engineeringDegree: "B.Tech IT (2021-2025)",
     currentRole: "Data Engineer - BTSA",
     company: "ZS",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/Abhishek-raijpg.jpg",
   },
   {
     id: "0e0a1493-144f-43b3-bf3d-8dfae33708c5",
@@ -69,7 +69,7 @@ export const placementList = [
     engineeringDegree: "B.Tech IT (2021-2025)",
     currentRole: "Software Engineer",
     company: "Pursuit Software",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/Harsh-Pandeypng.png",
   },
   {
     id: "2baebd24-ee89-4b21-878c-e2b0b3717622",
@@ -78,7 +78,7 @@ export const placementList = [
     engineeringDegree: "B.Tech IT (2021-2025)",
     currentRole: "Software Engineer",
     company: "DRDO",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/Aryan-raj.png",
   },
   {
     id: "27789334-4e83-4bf4-b7cc-0602aee60ded",
@@ -87,7 +87,7 @@ export const placementList = [
     engineeringDegree: "B.Tech ECE (2021-2025)",
     currentRole: "Member of Technical Team",
     company: "GeeksforGeeks",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/aradhya-jha.jpg",
   },
   {
     id: "8d188010-afb8-42f5-a3a0-e20b599294c8",
@@ -96,16 +96,17 @@ export const placementList = [
     engineeringDegree: "B.Tech ENE (2021-2025)",
     currentRole: "Graduate Engineer Trainee",
     company: "Saatvik Solar",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/Devanshi.jpg",
   },
   {
     id: "c6d32147-b258-4bb4-ad9b-c7986c246801",
     name: "Perusomula Gowtham Siddartha",
-    linkedin: "https://www.linkedin.com/in/perusomula-gowtham-siddartha-57aa26264/",
+    linkedin:
+      "https://www.linkedin.com/in/perusomula-gowtham-siddartha-57aa26264/",
     engineeringDegree: "B.Tech IT (2021-2025)",
     currentRole: "Data Associate",
     company: "Amazon",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/Gowtama.jpg",
   },
   {
     id: "826f5164-ab85-462e-898a-0b4d876efc29",
@@ -114,7 +115,7 @@ export const placementList = [
     engineeringDegree: "B.Tech IT (2016-2020)",
     currentRole: "Senior Software Engineer",
     company: "Everbridge",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/Mrinmoy.jpg",
   },
   {
     id: "90f5f03f-ecda-4f01-acb1-b448449fdd31",
@@ -123,7 +124,7 @@ export const placementList = [
     engineeringDegree: "B.Tech ECE (2011-2015)",
     currentRole: "Project Manager",
     company: "Philips",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/Ipshita.jpg",
   },
   {
     id: "8f66c7b9-1e5c-4fb2-9de7-6ebafc9ae765",
@@ -132,8 +133,8 @@ export const placementList = [
     engineeringDegree: "B.Tech IT (2016-2020)",
     currentRole: "Senior Software Engineer",
     company: "HSBC",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
-  }
+    image: "/profile-pictures/Yusuf.jpg",
+  },
 ];
 
 export const higherStudiesIndiaList = [
@@ -144,7 +145,7 @@ export const higherStudiesIndiaList = [
     engineeringDegree: "B.Tech IT (2020-2024)",
     program: "M.Tech Electronics & Communications",
     institution: "NIT Rourkela",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/pravinkumar.png",
   },
   {
     id: "3c619932-0ef9-4164-8233-fe13e3f2540d",
@@ -153,15 +154,16 @@ export const higherStudiesIndiaList = [
     engineeringDegree: "B.Tech (2007-2011)",
     program: "PhD, Data Science and Artifical Intelligence",
     institution: "IIIT Dharwad",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/laishram.jpg",
   },
   {
     id: "4787cf7d-7361-49f2-a454-6f0eacb3e280",
     name: "Abhi Nitnaware",
+    linkedin: "https://www.linkedin.com/in/abhi-nitnaware/",
     engineeringDegree: "B.Tech IT (2021-2025)",
     program: "PhD, AI/ML",
     institution: "MNIT, Nagpur",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/abhinitnaware.jpg",
   },
   {
     id: "35cc62c7-2e4a-40df-997c-36d115ab8c85",
@@ -169,8 +171,9 @@ export const higherStudiesIndiaList = [
     engineeringDegree: "B.Tech IT (2021-2025)",
     program: "M.Tech Computer Science",
     institution: "IIT Guwahati",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
-  }
+    image:
+      "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100",
+  },
 ];
 
 export const abroadList = [
@@ -181,7 +184,7 @@ export const abroadList = [
     engineeringDegree: "B.Tech IT (2011-2015)",
     program: "Post Doctoral Fellow",
     institution: "Khalifa University, Abu Dhabi, UAE",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/mehbub.jpg",
   },
   {
     id: "58002b62-930f-440a-983b-c92bae323cf6",
@@ -190,7 +193,7 @@ export const abroadList = [
     engineeringDegree: "B.Tech IT (2011-2015)",
     program: "Post Doctoral Research Fellow",
     institution: "University of Calabria, Italy",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/rahul-amin.jpg",
   },
   {
     id: "bbd73917-eaf9-42ce-982d-f95091e04644",
@@ -199,7 +202,7 @@ export const abroadList = [
     engineeringDegree: "B.Tech BME (2014-2018)",
     program: "MEngg. Biomedical",
     institution: "University College Dublin, Ireland",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/dhritica-borah.jpg",
   },
   {
     id: "82c49a07-799e-4c0c-97ab-51f1bc29f536",
@@ -208,7 +211,7 @@ export const abroadList = [
     engineeringDegree: "B.Tech BME (2016-2020)",
     program: "MSc Biomedical Engineering (Medical Imaging)",
     institution: "University of Groningen, Netherlands (2022-2025)",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/sudarshana.jpg",
   },
   {
     id: "c6fe38fb-1d0b-41c8-ad36-23d9359dd077",
@@ -217,7 +220,7 @@ export const abroadList = [
     engineeringDegree: "B.Tech IT (2020-2024)",
     program: "MS - Artificial Intelligence",
     institution: "University of Southampton",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/bishalpandey.png",
   },
   {
     id: "b4602383-79d7-4632-b39c-f5ce1571aa8a",
@@ -226,7 +229,7 @@ export const abroadList = [
     engineeringDegree: "B.Tech ECE (2019-2023)",
     program: "MS - Electrical Engineering",
     institution: "University of Pennsylvania",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/indrani-paul.jpg",
   },
   {
     id: "11038e4e-9e2d-49b5-a742-47ed0c2eddfc",
@@ -235,7 +238,7 @@ export const abroadList = [
     engineeringDegree: "B.Tech ECE (2013-2017)",
     program: "Masters in Management",
     institution: "Technical University of Munich",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/ananyabordoloi.jpg",
   },
   {
     id: "c9bbd6fb-74a8-4969-9c06-480409a2c561",
@@ -244,7 +247,7 @@ export const abroadList = [
     engineeringDegree: "B.Tech IT (2020-2024)",
     program: "MSc - Artificial Intelligence",
     institution: "University of St. Andrews, Scotland",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/pranjalsinha.jpg",
   },
   {
     id: "427a4d9a-44b8-44a7-823c-5558e545db54",
@@ -253,8 +256,8 @@ export const abroadList = [
     engineeringDegree: "B.Tech ECE (2009-2013)",
     program: "Post Doctoral Fellow",
     institution: "University of Munster, Germany",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
-  }
+    image: "/profile-pictures/paromita.jpg",
+  },
 ];
 
 export const entrepreneurList = [
@@ -265,7 +268,7 @@ export const entrepreneurList = [
     engineeringDegree: "B.Tech IT (2022-2025)",
     company: "HydroSec Quantum Technologies",
     role: "Founder",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
+    image: "/profile-pictures/masoomul.jpg",
   },
   {
     id: "be226252-69c2-42d8-89a4-eb03e8990bf3",
@@ -274,15 +277,15 @@ export const entrepreneurList = [
     engineeringDegree: "B.Tech IT (2020-2023)",
     company: "Waplify",
     role: "Founder",
-    image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D&sat=-100"
-  }
+    image: "/profile-pictures/dipanga.jpg",
+  },
 ];
 
 const alumniData = {
   placementList,
   higherStudiesIndiaList,
   abroadList,
-  entrepreneurList
+  entrepreneurList,
 };
 
 export default alumniData;

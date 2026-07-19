@@ -138,16 +138,10 @@ const AlumniViewAll = () => {
                   </p>
 
                   {/* Social Actions */}
-                  <div className="flex gap-3 mt-6">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
-                      className="p-2 rounded-full border transition-colors border-zinc-300 hover:bg-zinc-200 text-zinc-700"
-                      aria-label="Share"
-                    >
-                      <Share2 className="h-3.5 w-3.5" />
-                    </button>
+                  <div className="flex gap-3 mt-3 justify-center items-center">
+                    <p className="font-sans text-xs font-semibold tracking-wide text-black/75 ">
+                      {alumnus.engineeringDegree}
+                    </p>
                     {alumnus.linkedin && (
                       <a
                         href={alumnus.linkedin}

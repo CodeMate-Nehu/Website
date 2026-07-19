@@ -20,12 +20,13 @@ import {
   Paperclip,
   Sparkles,
 } from "lucide-react";
+
 import Button from "../components/Button";
 
 // Grayscale portraits and mock data for detailed alumni profiles
-const alumniData = placementList.slice(0, 4).map(al => ({
+const alumniData = placementList.slice(0, 4).map((al) => ({
   ...al,
-  role: al.currentRole
+  role: al.currentRole,
 }));
 
 const Alumni = () => {
@@ -43,22 +44,11 @@ const Alumni = () => {
     studies: {
       title: "Pioneering academic careers",
       description:
-        "Alumni pursuing Masters and PhDs at top-ranked universities worldwide like MIT, Stanford, Carnegie Mellon, and Georgia Tech.",
+        "Alumni pursuing Masters and PhDs at top-ranked universities worldwide.",
       icon: <GraduationCap className="h-6 w-6 text-white" />,
     },
-    research: {
-      title: "Innovating the future",
-      description:
-        "Researchers and scientists working at corporate labs and research institutes, advancing AI, quantum computing, robotics, and hardware systems.",
-      icon: <Sparkles className="h-6 w-6 text-white" />,
-    },
-    mgmt: {
-      title: "Leading business growth",
-      description:
-        "Founders, directors, and consultants shaping business strategies and leading global teams at tech, finance, and product conglomerates.",
-      icon: <Award className="h-6 w-6 text-white" />,
-    },
-    startups: {
+
+    entrepreneurs: {
       title: "Disruptive founders",
       description:
         "Entrepreneurs who built scalable products, launched tech startups, and secured venture funding to address modern real-world challenges.",
@@ -67,7 +57,7 @@ const Alumni = () => {
     global: {
       title: "Global presence & network",
       description:
-        "Alumni chapters spread across San Francisco, London, Berlin, Bengaluru, Singapore, and Sydney, creating a global reach.",
+        "Our alumni chapters span across the globe, fostering a strong network of professionals, innovators, and mentors who continue to support and inspire the CodeMate community.",
       icon: <Globe className="h-6 w-6 text-white" />,
     },
   };
@@ -151,18 +141,17 @@ const Alumni = () => {
       <section className="relative z-10 mx-auto max-w-7xl px-4 pt-16 pb-16 sm:px-6 md:pt-28 md:pb-20 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Text */}
-          <div className="lg:col-span-6 space-y-6 text-left">
-            <span className="inline-block font-sans text-xs font-semibold tracking-[0.25em] text-brand-primary uppercase">
-              Pathways
-            </span>
-            <h1 className="font-heading text-6xl font-extrabold tracking-tight text-brand-primary sm:text-7xl lg:text-8xl leading-none">
-              connect
+          <div className="lg:col-span-6  text-left">
+            <h1 className="font-heading text-6xl font-extrabold tracking-tight text-brand-primary sm:text-4xl lg:text-6xl leading-none">
+              Pathways connect
             </h1>
             <p className="font-sans text-base sm:text-lg text-zinc-650 leading-relaxed max-w-xl">
-              SCET Alumni network connects you with the global network of
-              professional resources, events and information. Explore the
-              various paths our alumni have taken and connect with those who can
-              help you on your own journey.
+              The CodeMate Alumni Network is a community of graduates who
+              continue to inspire, mentor, and support the next generation of
+              innovators. From sharing industry insights to fostering meaningful
+              connections, our alumni remain an integral part of CodeMate's
+              journey—strengthening a culture of learning, collaboration, and
+              lifelong growth.
             </p>
           </div>
 
@@ -170,7 +159,7 @@ const Alumni = () => {
           <div className="lg:col-span-6 flex justify-center lg:justify-end">
             <div className="relative p-2.5 bg-white rounded-2xl border border-zinc-200/60 shadow-2xl shadow-brand-primary/5 max-w-[500px] w-full transform hover:scale-[1.02] transition-transform duration-300">
               <img
-                src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&h=400&q=80&sat=-100"
+                src="/Codemate-group-picture.jpg"
                 alt="SCET Alumni Network Group"
                 loading="lazy"
                 className="rounded-xl w-full h-auto object-cover aspect-[3/2] filter grayscale"
@@ -205,10 +194,11 @@ const Alumni = () => {
             {/* Stat Boxes */}
             <div className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
               {[
-                { value: "150+", label: "alumni" },
-                { value: "250+", label: "mentorships" },
-                { value: "10+", label: "global chapters" },
-                { value: "40+", label: "startups" },
+                { value: "30+", label: "alumni" },
+                { value: "15+", label: "tech leaders" },
+                { value: "20+", label: "pursuing higher studies" },
+
+                { value: "15+", label: "exploring global opportunities" },
               ].map((stat, idx) => (
                 <div
                   key={idx}
@@ -233,9 +223,7 @@ const Alumni = () => {
                 {[
                   { id: "tech", label: "Tech" },
                   { id: "studies", label: "Higher Studies" },
-                  { id: "research", label: "R&D" },
-                  { id: "mgmt", label: "Management" },
-                  { id: "startups", label: "Startups" },
+                  { id: "entrepreneurs", label: "Entrepreneurs" },
                   { id: "global", label: "Global" },
                 ].map((tab) => {
                   const isActive = activeTab === tab.id;
