@@ -7,7 +7,10 @@
  */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { placementList } from "../components/data/alumniData";
+import {
+  placementList,
+  higherStudiesIndiaList,
+} from "../components/data/alumniData";
 import {
   Briefcase,
   GraduationCap,
@@ -23,11 +26,14 @@ import {
 
 import Button from "../components/Button";
 
-// Grayscale portraits and mock data for detailed alumni profiles
-const alumniData = placementList.slice(0, 4).map((al) => ({
-  ...al,
-  role: al.currentRole,
-}));
+// Fixed alumni to feature in the "Meet the Club Alumni" section
+const featuredNames = ["Abhi Nitnaware", "Harsh Pandey", "Abhishek Kumar Rai"];
+const alumniData = [...placementList, ...higherStudiesIndiaList]
+  .filter((al) => featuredNames.includes(al.name))
+  .map((al) => ({
+    ...al,
+    role: al.currentRole || al.program,
+  }));
 
 const Alumni = () => {
   const navigate = useNavigate();
@@ -319,7 +325,7 @@ const Alumni = () => {
           </div>
 
           {/* Members Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-6">
             {alumniData.map((alumnus, idx) => (
               <div
                 key={idx}
