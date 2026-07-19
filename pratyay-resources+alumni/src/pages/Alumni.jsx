@@ -329,7 +329,7 @@ const Alumni = () => {
             {alumniData.map((alumnus, idx) => (
               <div
                 key={idx}
-                onClick={() => navigate(`/AlumniDetailed/${alumnus.id}`)}
+                onClick={() => window.open(alumnus.linkedin, '_blank')}
                 className="group flex flex-col gap-4 cursor-pointer"
               >
                 <div className="relative overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-200/60 shadow-sm aspect-square">

@@ -9,7 +9,6 @@ import Logo from "./assets/BrandLogo.png";
 import Home from "./pages/Home";
 import Resources from "./pages/Resources";
 import Alumni from "./pages/Alumni";
-import AlumniDetailed from "./pages/AlumniDetailed";
 import AlumniViewAll from "./pages/AlumniViewAll";
 import Footer from "./components/Footer";
 
@@ -73,7 +72,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Alumni" element={<Alumni />} />
-          <Route path="/AlumniDetailed/:id" element={<AlumniDetailed />} />
           <Route path="/AlumniViewAll" element={<AlumniViewAll />} />
           <Route path="/Resources" element={<Resources />} />
         </Routes>

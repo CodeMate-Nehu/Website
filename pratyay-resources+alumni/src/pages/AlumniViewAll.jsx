@@ -120,8 +120,7 @@ const AlumniViewAll = () => {
               {cat.alumni.map((alumnus, idx) => (
                 <div
                   key={idx}
-                  onClick={() => navigate(`/AlumniDetailed/${alumnus.id}`)}
-                  className="rounded-2xl p-6 flex flex-col items-center text-center cursor-pointer transition-all duration-300 hover:scale-[1.02] shadow-md border bg-zinc-50 border-zinc-200/80 text-black"
+                  className="rounded-2xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:scale-[1.02] shadow-md border bg-zinc-50 border-zinc-200/80 text-black"
                 >
                   <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 mb-4 border-zinc-300">
                     <img
