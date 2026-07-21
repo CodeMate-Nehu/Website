@@ -217,6 +217,7 @@ h4 {
     z-index: 2002;
     display: none;
     /* Only desktop */
+    cursor: pointer;
 }
 
 @media (min-width: 769px) {

@@ -14,7 +14,13 @@ import AlumniViewAll from "./pages/AlumniViewAll";
 import Footer from "./components/Footer";
 
 function App() {
-  const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState('alumni-view-all');
+  const [selectedAlumni, setSelectedAlumni] = useState(defaultAlumni);
+
+  const handleSelectAlumni = (alumni) => {
+    setSelectedAlumni(alumni);
+    setCurrentPage('alumni-detailed');
+  };
 
   return (
     <div className="min-h-screen bg-brand-dark flex flex-col justify-between">
@@ -23,50 +29,24 @@ function App() {
           position="right"
           isFixed={true}
           items={[
-            {
-              label: "Home",
-              ariaLabel: "Go to home page",
-              link: "/",
-              onClick: () => navigate("/"),
-            },
-            {
-              label: "Alumni",
-              ariaLabel: "View alumni",
-              link: "/alumni",
-              onClick: () => navigate("/alumni"),
-            },
-            {
-              label: "Resources",
-              ariaLabel: "View resources",
-              link: "/resources",
-              onClick: () => navigate("/resources"),
-            },
-            {
-              label: "Events",
-              ariaLabel: "View events",
-              link: "#events",
-              onClick: () => {},
-            },
-            {
-              label: "Community",
-              ariaLabel: "Join community",
-              link: "#community",
-              onClick: () => {},
-            },
+            { label: 'Home', ariaLabel: 'Go to home page', link: '#alumni', onClick: () => setCurrentPage('alumni') },
+            { label: 'Resources', ariaLabel: 'View resources', link: '#resources', onClick: () => setCurrentPage('resources') },
+            { label: 'Events', ariaLabel: 'View events', link: '#events', onClick: () => {} },
+            { label: 'Community', ariaLabel: 'Join community', link: '#community', onClick: () => {} }
           ]}
           socialItems={[
-            { label: "Facebook", link: "https://facebook.com/mvpblocks" },
-            { label: "Instagram", link: "https://instagram.com/mvpblocks" },
-            { label: "Twitter", link: "https://twitter.com/mvpblocks" },
-            { label: "GitHub", link: "https://github.com/mvpblocks" },
-            { label: "Dribbble", link: "https://dribbble.com/mvpblocks" },
+            { label: 'Facebook', link: 'https://facebook.com/mvpblocks' },
+            { label: 'Instagram', link: 'https://instagram.com/mvpblocks' },
+            { label: 'Twitter', link: 'https://twitter.com/mvpblocks' },
+            { label: 'GitHub', link: 'https://github.com/mvpblocks' },
+            { label: 'Dribbble', link: 'https://dribbble.com/mvpblocks' }
           ]}
           displaySocials={true}
           displayItemNumbering={true}
           menuButtonColor="#1f2937"
           openMenuButtonColor="#1f2937"
           changeMenuColorOnOpen={true}
-          colors={["#ffedd5", "#f37f30"]}
+          colors={['#ffedd5', '#f37f30']}
           logoUrl={Logo}
           accentColor="#f37f30"
         />
