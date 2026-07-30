@@ -66,23 +66,10 @@ body {
 
 /* GRID + ORBS */
 .grid-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-}
-.grid-bg svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  display: none !important;
 }
 .orb {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(70px);
+  display: none !important;
 }
 
 /* HERO */
@@ -96,46 +83,77 @@ body {
   position: relative;
   overflow: hidden;
   padding: 80px 24px;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(to right, rgba(36, 36, 36, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 25, 25, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 107, 0, 0.1);
-  border: 1px solid rgba(255, 107, 0, 0.25);
-  border-radius: 30px;
-  padding: 8px 20px;
-  margin-bottom: 32px;
+  background: rgba(243, 127, 48, 0.1);
+  border: 1px solid rgba(243, 127, 48, 0.2);
+  border-radius: 9999px;
+  padding: 4px 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 .badge-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--orange);
-  box-shadow: 0 0 10px var(--orange);
+  background: #f37f30;
+  flex-shrink: 0;
+  box-shadow: none;
 }
 .badge-text {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--orange);
-  letter-spacing: 1px;
+  font-family: "Inter", "Outfit", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #f37f30;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 #hero h1 {
-  font-size: clamp(52px, 9vw, 100px);
-  font-weight: 900;
+  font-family: "League Spartan", "Outfit", sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
   line-height: 1;
-  letter-spacing: -3px;
+  letter-spacing: -0.025em;
   margin-bottom: 24px;
+  color: #18181b;
+}
+@media (min-width: 640px) {
+  #hero h1 {
+    font-size: 4.5rem;
+  }
+}
+@media (min-width: 768px) {
+  #hero h1 {
+    font-size: 6rem;
+  }
 }
 #hero h1 span {
-  color: var(--orange);
+  color: #f37f30;
 }
 #hero p {
-  font-size: clamp(16px, 2vw, 21px);
-  color: var(--text2);
-  max-width: 580px;
-  margin: 0 auto 44px;
-  line-height: 1.65;
+  font-size: 1rem;
+  color: #52525b;
+  max-width: 672px;
+  margin: 0 auto 36px;
+  line-height: 1.625;
+}
+@media (min-width: 640px) {
+  #hero p {
+    font-size: 1.125rem;
+  }
+}
+@media (min-width: 768px) {
+  #hero p {
+    font-size: 1.25rem;
+  }
 }
 .hero-btns {
   display: flex;
@@ -419,6 +437,7 @@ body {
   overflow: hidden;
   background: var(--bg2);
   padding: 80px 0 100px;
+  display: none;
 }
 #detail-inner {
   max-width: 1200px;
@@ -427,10 +446,33 @@ body {
   position: relative;
   z-index: 1;
 }
+.detail-close-btn {
+  position: absolute;
+  top: 0px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+.detail-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
 #detail-placeholder {
   text-align: center;
   padding: 70px 0;
   color: #bbb;
+  display: none;
 }
 #detail-placeholder .ph-icon {
   font-size: 48px;

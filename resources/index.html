@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base & Resources | CodeMate</title>
+    <meta name="description"
+        content="Curated resources for placements, higher studies, and career growth, handpicked for students by CodeMate.">
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=League+Spartan:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        :root {
+            --brand-primary: #f37f30;
+            --brand-primary-dark: #d5641b;
+            --bg-dark: #fdfdfd;
+            --text-dark: #111827;
+            --text-muted: #6b7280;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfdfd;
+            background-image:
+                linear-gradient(to right, rgba(36, 36, 36, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(26, 25, 25, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .font-heading {
+            font-family: 'League Spartan', sans-serif;
+        }
+
+        /* Hero Landing Section (Full Screen 100vh) */
+        .resources-hero-section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 24px 80px 24px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(243, 127, 48, 0.1);
+            border: 1px solid rgba(243, 127, 48, 0.2);
+            border-radius: 9999px;
+            padding: 4px 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #f37f30;
+            flex-shrink: 0;
+        }
+
+        .badge-text {
+            font-family: "Inter", "Outfit", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: #f37f30;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: "League Spartan", "Outfit", sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.025em;
+            margin-bottom: 24px;
+            color: #18181b;
+        }
+
+        @media (min-width: 640px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 6rem;
+            }
+        }
+
+        .hero-title span {
+            color: #f37f30;
+        }
+
+        .hero-subtext {
+            font-size: 1rem;
+            color: #52525b;
+            max-width: 672px;
+            margin: 0 auto 24px;
+            line-height: 1.625;
+        }
+
+        @media (min-width: 640px) {
+            .hero-subtext {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Filter Bar */
+        .res-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 6rem 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+        }
+
+        .filter-btn {
+            padding: 0.65rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            border: none;
+            background: #e5e7eb;
+            color: #374151;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            background: rgba(243, 127, 48, 0.15);
+            color: var(--brand-primary);
+        }
+
+        .filter-btn.active {
+            background: #111827;
+            color: #ffffff;
+        }
+
+        /* Resources Grid */
+        .res-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .res-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .res-card {
+            background: #ffffff;
+            border-radius: 1.25rem;
+            border: 1px solid #e5e7eb;
+            padding: 2.25rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .res-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(243, 127, 48, 0.12);
+            border-color: rgba(243, 127, 48, 0.4);
+        }
+
+        .res-category-tag {
+            display: inline-block;
+            font-size: 0.6875rem;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            color: var(--brand-primary);
+            text-transform: uppercase;
+            background: rgba(243, 127, 48, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            align-self: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .res-img-wrap {
+            aspect-ratio: 16/9;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background: #f3f4f6;
+            margin-bottom: 1.5rem;
+        }
+
+        .res-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .res-card:hover .res-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .res-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #111827;
+            margin-bottom: 0.75rem;
+            transition: color 0.2s ease;
+        }
+
+        .res-card:hover .res-title {
+            color: var(--brand-primary);
+        }
+
+        .res-desc {
+            font-size: 0.95rem;
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .res-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.25rem;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .author-avatar {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: rgba(243, 127, 48, 0.2);
+            color: #111827;
+            font-size: 0.75rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .author-name {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .action-link {
+            font-size: 0.75rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            color: var(--brand-primary);
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.2s ease;
+        }
+
+        .action-link:hover {
+            gap: 0.75rem;
+            color: var(--brand-primary-dark);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar-container"></div>
+
+    <!-- HERO LANDING SECTION -->
+    <section class="resources-hero-section">
+        <div style="position: relative; z-index: 1; max-width: 900px; width: 100%;">
+            <div class="hero-badge">
+                <div class="badge-dot"></div>
+                <span class="badge-text">THE KNOWLEDGE BASE</span>
+            </div>
+            <h1 class="hero-title">explore. <span>learn.</span><br />build.</h1>
+            <p class="hero-subtext">
+                Curated resources for placements, higher studies, and career growth, handpicked for students. Editorial
+                engineering for the modern developer.
+            </p>
+        </div>
+    </section>
+
+    <!-- RESOURCES CONTENT -->
+    <main class="res-container">
+        <!-- Filter Bar -->
+        <div class="filter-bar" id="filterBar">
+            <button class="filter-btn active" onclick="filterResources('All', this)">All Resources</button>
+            <button class="filter-btn" onclick="filterResources('PLACEMENTS', this)">Placements</button>
+            <button class="filter-btn" onclick="filterResources('HIGHER STUDIES', this)">Higher Studies</button>
+            <button class="filter-btn" onclick="filterResources('R&D', this)">R&D</button>
+            <button class="filter-btn" onclick="filterResources('Open Source', this)">Open Source</button>
+        </div>
+
+        <!-- Resources Grid -->
+        <div class="res-grid" id="resourcesGrid">
+            <!-- Dynamic Cards Loaded via JS -->
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        const resourceList = [
+            {
+                id: "scrimba-interactive-learning",
+                category: "Open Source",
+                type: "Link",
+                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
+                title: "Scrimba – The Interactive Way to Learn Coding",
+                description: "Looking for a smarter and more engaging way to learn programming? Scrimba makes coding simple, practical, and interactive with in-browser coding.",
+                authorInitials: "CM",
+                authorName: "CodeMate Team",
+                link: "https://scrimba.com/"
+            },
+            {
+                id: "gate-cse-prep-guide",
+                category: "HIGHER STUDIES",
+                type: "Download",
+                image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop",
+                title: "GATE CSE Preparation Guide",
+                description: "Gearing up for GATE CSE? A comprehensive list of study materials including video lectures, PYQs, and practice papers for core subjects.",
+                authorInitials: "CM",
+                authorName: "CodeMate Team",
+                link: "resources-data/GATECSEResources.pdf"
+            },
+            {
+                id: "ai-agents-technical-guide",
+                category: "R&D",
+                type: "Download",
+                image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2070&auto=format&fit=crop",
+                title: "AI Agents Technical Guide",
+                description: "A clear roadmap to understanding and building AI agents, from fundamentals to production level systems. Learn core concepts, architecture, and reliability.",
+                authorInitials: "CM",
+                authorName: "CodeMate Team",
+                link: "resources-data/GoogleAgents.pdf"
+            },
+            {
+                id: "gre-preparation-guide",
+                category: "HIGHER STUDIES",
+                type: "Download",
+                image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop",
+                title: "GRE Preparation Guide",
+                description: "A complete and structured guide to help you prepare efficiently from start to finish. A curated collection of trusted resources covering the exam and high-level practice.",
+                authorInitials: "CM",
+                authorName: "CodeMate Team",
+                link: "resources-data/GREPreparation_Guide.pdf"
+            },
+            {
+                id: "resume-building-handbook",
+                category: "PLACEMENTS",
+                type: "Download",
+                image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2070&auto=format&fit=crop",
+                title: "Resume Building Breakdown & Handbook",
+                description: "Two resumes. Same College. Same Skills. Different outcomes. See what works, what gets ignored, and what actually matters to recruiters.",
+                authorInitials: "CM",
+                authorName: "CodeMate Team",
+                link: [
+                    { label: "Selected Resume", url: "resources-data/SelectedGowthamSiddarthaCVResume.pdf" },
+                    { label: "Rejected Resume", url: "resources-data/RejectedGowthamSiddarthaCVResume.pdf" }
+                ]
+            },
+            {
+                id: "roadmap-sh-guide",
+                category: "Open Source",
+                type: "Link",
+                image: "https://images.unsplash.com/photo-1506729623306-b5a934d88b53?q=80&w=2070&auto=format&fit=crop",
+                title: "Developer Roadmaps (roadmap.sh)",
+                description: "A brilliant platform offering interactive, community-driven developer roadmaps, learning guides and curated resources across domains like Frontend, Backend, AI/ML, and more.",
+                authorInitials: "CM",
+                authorName: "CodeMate Team",
+                link: "https://roadmap.sh/"
+            }
+        ];
+
+        let currentFilter = 'All';
+
+        function renderResources() {
+            const grid = document.getElementById('resourcesGrid');
+            const items = currentFilter === 'All' ? resourceList : resourceList.filter(r => r.category.toUpperCase() === currentFilter.toUpperCase());
+
+            let html = '';
+            items.forEach(res => {
+                let actionHtml = '';
+                if (Array.isArray(res.link)) {
+                    actionHtml = `<div style="display: flex; gap: 1rem; flex-wrap: wrap;">`;
+                    res.link.forEach(l => {
+                        actionHtml += `
+                            <a href="${encodeURI(l.url)}" target="_blank" download class="action-link">
+                                <span>${l.label}</span>
+                                <i data-lucide="download" style="width: 1rem; height: 1rem;"></i>
+                            </a>
+                        `;
+                    });
+                    actionHtml += `</div>`;
+                } else if (res.type === 'Download') {
+                    actionHtml = `
+                        <a href="${encodeURI(res.link)}" target="_blank" download class="action-link">
+                            <span>Download</span>
+                            <i data-lucide="download" style="width: 1rem; height: 1rem;"></i>
+                        </a>
+                    `;
+                } else {
+                    actionHtml = `
+                        <a href="${res.link}" target="_blank" rel="noopener noreferrer" class="action-link">
+                            <span>Read Now</span>
+                            <i data-lucide="arrow-right" style="width: 1rem; height: 1rem;"></i>
+                        </a>
+                    `;
+                }
+
+                html += `
+                    <article class="res-card">
+                        <span class="res-category-tag">${res.category}</span>
+                        <div class="res-img-wrap">
+                            <img src="${res.image}" alt="${res.title}" loading="lazy">
+                        </div>
+                        <h3 class="font-heading res-title">${res.title}</h3>
+                        <p class="res-desc">${res.description}</p>
+                        <div class="res-footer">
+                            <div class="author-box">
+                                <div class="author-avatar">${res.authorInitials}</div>
+                                <span class="author-name">${res.authorName}</span>
+                            </div>
+                            ${actionHtml}
+                        </div>
+                    </article>
+                `;
+            });
+
+            grid.innerHTML = html;
+            if (window.lucide) window.lucide.createIcons();
+        }
+
+        function filterResources(category, btnEl) {
+            currentFilter = category;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btnEl.classList.add('active');
+            renderResources();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderResources();
+        });
+    </script>
+</body>
+
+</html>

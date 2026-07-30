@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Directory | CodeMate</title>
+    <meta name="description" content="Comprehensive directory of CodeMate alumni categorized by career pathways including tech leaders, higher studies, global opportunities, and entrepreneurs.">
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=League+Spartan:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        :root {
+            --brand-primary: #f37f30;
+            --brand-primary-dark: #d5641b;
+            --bg-dark: #fdfdfd;
+            --text-dark: #111827;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfdfd;
+            background-image:
+              linear-gradient(to right, rgba(36, 36, 36, 0.05) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(26, 25, 25, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .font-heading {
+            font-family: 'League Spartan', sans-serif;
+        }
+
+        .orange-glow-top {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1000px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(243, 127, 48, 0.12) 0%, rgba(243, 127, 48, 0.03) 50%, rgba(253, 253, 253, 0) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .dir-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 6rem 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.2s ease;
+        }
+
+        .back-btn:hover {
+            color: #111827;
+        }
+
+        .dir-header-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            color: var(--brand-primary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .dir-header-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #111827;
+            line-height: 1;
+            margin-bottom: 3rem;
+        }
+
+        /* Category Section */
+        .category-block {
+            margin-bottom: 4rem;
+        }
+
+        .category-header-banner {
+            padding: 1.75rem 2rem;
+            background: rgba(249, 250, 251, 0.8);
+            border-radius: 1.25rem;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            margin-bottom: 1.75rem;
+        }
+
+        .category-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--brand-primary);
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .category-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #111827;
+            margin-top: 0.25rem;
+        }
+
+        .category-sub {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+
+        /* Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .alumni-dir-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 1.25rem;
+            padding: 1.75rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .alumni-dir-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+            border-color: rgba(243, 127, 48, 0.4);
+        }
+
+        .avatar-circle {
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #d1d5db;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .avatar-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .alumni-dir-card:hover .avatar-circle img {
+            filter: grayscale(0%);
+        }
+
+        .alumni-card-name {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+
+        .alumni-card-role {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+
+        .alumni-card-footer {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: auto;
+            padding-top: 0.5rem;
+        }
+
+        .degree-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .linkedin-link-btn {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            border: 1px solid #d1d5db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4b5563;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .linkedin-link-btn:hover {
+            background: #e5e7eb;
+            color: #0a66c2;
+        }
+    </style>
+</head>
+<body>
+    <div class="orange-glow-top"></div>
+    <div id="navbar-container"></div>
+
+    <main class="dir-container" style="padding-top: 100px;">
+        <div>
+            <span class="category-tag" style="letter-spacing: 0.25em; margin-bottom: 0.5rem;">SCET DIRECTORY</span>
+            <h1 class="font-heading dir-header-title">Alumni Networks</h1>
+        </div>
+
+        <div id="directoryContent">
+            <!-- Dynamic Content loaded via JS -->
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        const placementList = [
+            { name: "Kirti Jha", role: "Software Developer at Standard Chartered Bank", engineeringDegree: "B.Tech IT (2018-2022)", linkedin: "https://www.linkedin.com/in/kirtijha/", image: "../profile-pictures/Kriti_Jhajpg.jpg" },
+            { name: "Manjit Roy", role: "Senior Data Scientist at PwC", engineeringDegree: "B.Tech IT (2017-2021)", linkedin: "https://www.linkedin.com/in/manjit-roy-3532b4148/", image: "../profile-pictures/Manjit-royjpg.jpg" },
+            { name: "Md Afzal Hassan", role: "Lead Consultant at Genpact", engineeringDegree: "B.Tech IT (2013-2017)", linkedin: "https://www.linkedin.com/in/afzalhasn/", image: "../profile-pictures/Alfazjpg.jpg" },
+            { name: "Neha Nath", role: "Software Engineer (GenAI/LLM) at Pursuit Software", engineeringDegree: "B.Tech IT (2021-2025)", linkedin: "https://www.linkedin.com/in/neha2021nehu/", image: "../profile-pictures/Neha-nathjpg.jpg" },
+            { name: "Monsur A Saikia", role: "Product Manager at YouTube", engineeringDegree: "B.Tech IT (2020-2024)", linkedin: "https://www.linkedin.com/in/monsursaikia/", image: "../profile-pictures/Monsurpng.png" },
+            { name: "Rijumani Deka", role: "Technical Lead at Tech Mahindra", engineeringDegree: "B.Tech", linkedin: "https://www.linkedin.com/in/rijumani-deka/", image: "../profile-pictures/Rijumanijpg.jpg" },
+            { name: "Abhishek Kumar Rai", role: "Data Engineer - BTSA at ZS", engineeringDegree: "B.Tech IT (2021-2025)", linkedin: "https://www.linkedin.com/in/abhishek-kumar-rai-6b46a6269/", image: "../profile-pictures/Abhishek-raijpg.jpg" },
+            { name: "Harsh Pandey", role: "Software Engineer at Pursuit Software", engineeringDegree: "B.Tech IT (2021-2025)", linkedin: "https://www.linkedin.com/in/22harshpandey/", image: "../profile-pictures/Harsh-Pandeypng.png" },
+            { name: "Aryan Raj", role: "Software Engineer at DRDO", engineeringDegree: "B.Tech IT (2021-2025)", linkedin: "https://www.linkedin.com/in/aryan-raj-53082a251/", image: "../profile-pictures/Aryan-raj.png" },
+            { name: "Aradhya Jha", role: "Member of Technical Team at GeeksforGeeks", engineeringDegree: "B.Tech ECE (2021-2025)", linkedin: "https://www.linkedin.com/in/aradhyajha07/", image: "../profile-pictures/aradhya-jha.jpg" },
+            { name: "Devanshi Sanganeria", role: "Graduate Engineer Trainee at Saatvik Solar", engineeringDegree: "B.Tech ENE (2021-2025)", linkedin: "https://www.linkedin.com/in/devanshi-sanganeria/", image: "../profile-pictures/Devanshi.jpg" },
+            { name: "Perusomula Gowtham Siddartha", role: "Data Associate at Amazon", engineeringDegree: "B.Tech IT (2021-2025)", linkedin: "https://www.linkedin.com/in/perusomula-gowtham-siddartha-57aa26264/", image: "../profile-pictures/Gowtama.jpg" },
+            { name: "Mrinmoy Debnath", role: "Senior Software Engineer at Everbridge", engineeringDegree: "B.Tech IT (2016-2020)", linkedin: "https://www.linkedin.com/in/mrinmoy-debnath-58a4b3194/", image: "../profile-pictures/Mrinmoy.jpg" },
+            { name: "Ipshita Bose", role: "Project Manager at Philips", engineeringDegree: "B.Tech ECE (2011-2015)", linkedin: "https://www.linkedin.com/in/ipshita-bose-59ba7410a/", image: "../profile-pictures/Ipshita.jpg" },
+            { name: "Yusuf Humayun", role: "Senior Software Engineer at HSBC", engineeringDegree: "B.Tech IT (2016-2020)", linkedin: "https://www.linkedin.com/in/yusuf-humayun/", image: "../profile-pictures/Yusuf.jpg" }
+        ];
+
+        const higherStudiesIndiaList = [
+            { name: "Pravin Kumar Mahato", role: "M.Tech Electronics & Communications at NIT Rourkela", engineeringDegree: "B.Tech IT (2020-2024)", linkedin: "https://www.linkedin.com/in/pravin-kumar-mahato-6b0496230/", image: "../profile-pictures/pravinkumar.png" },
+            { name: "Laishram Rahul", role: "PhD, Data Science & AI at IIIT Dharwad", engineeringDegree: "B.Tech (2007-2011)", linkedin: "https://www.linkedin.com/in/laishram-rahul-70b529103/", image: "../profile-pictures/laishram.jpg" },
+            { name: "Abhi Nitnaware", role: "PhD, AI/ML at MNIT, Nagpur", engineeringDegree: "B.Tech IT (2021-2025)", linkedin: "https://www.linkedin.com/in/abhi-nitnaware/", image: "../profile-pictures/abhinitnaware.jpg" },
+            { name: "Kundan Jha", role: "M.Tech Computer Science at IIT Guwahati", engineeringDegree: "B.Tech IT (2021-2025)", linkedin: "", image: "https://images.unsplash.com/photo-1772371272179-3ecc656fc677?w=600&auto=format&fit=crop&q=60" }
+        ];
+
+        const abroadList = [
+            { name: "Dr. Mehbub Alam", role: "Post Doctoral Fellow at Khalifa University, Abu Dhabi", engineeringDegree: "B.Tech IT (2011-2015)", linkedin: "https://www.linkedin.com/in/mehbubalam/", image: "../profile-pictures/mehbub.jpg" },
+            { name: "Dr. Ruhul Amin Hazarika", role: "Post Doctoral Fellow at University of Calabria, Italy", engineeringDegree: "B.Tech IT (2011-2015)", linkedin: "https://www.linkedin.com/in/dr-ruhul-amin-hazarika-a7504b77/", image: "../profile-pictures/rahul-amin.jpg" },
+            { name: "Dhritica Bora", role: "MEngg. Biomedical at University College Dublin", engineeringDegree: "B.Tech BME (2014-2018)", linkedin: "https://www.linkedin.com/in/dhritica-bora/", image: "../profile-pictures/dhritica-borah.jpg" },
+            { name: "Sudarshana Barman", role: "MSc Biomedical Engineering at University of Groningen", engineeringDegree: "B.Tech BME (2016-2020)", linkedin: "https://www.linkedin.com/in/bme16sbarman/", image: "../profile-pictures/sudarshana.jpg" },
+            { name: "Bishal Pandey", role: "MS - Artificial Intelligence at University of Southampton", engineeringDegree: "B.Tech IT (2020-2024)", linkedin: "https://www.linkedin.com/in/bishal-pandey-78080230b", image: "../profile-pictures/bishalpandey.png" },
+            { name: "Indrani Paul Roy", role: "MS - Electrical Engineering at University of Pennsylvania", engineeringDegree: "B.Tech ECE (2019-2023)", linkedin: "https://www.linkedin.com/in/indrani-paulroy/", image: "../profile-pictures/indrani-paul.jpg" },
+            { name: "Ananya Bordoloi", role: "Masters in Management at Technical University of Munich", engineeringDegree: "B.Tech ECE (2013-2017)", linkedin: "https://www.linkedin.com/in/ananya-bordoloi/", image: "../profile-pictures/ananyabordoloi.jpg" },
+            { name: "Pranjal Sinha", role: "MSc - AI at University of St. Andrews, Scotland", engineeringDegree: "B.Tech IT (2020-2024)", linkedin: "https://www.linkedin.com/in/psinha06/", image: "../profile-pictures/pranjalsinha.jpg" },
+            { name: "Paromita Bhattacharjee", role: "Post Doctoral Fellow at University of Munster, Germany", engineeringDegree: "B.Tech ECE (2009-2013)", linkedin: "https://www.linkedin.com/in/paromita-bhattacharjee-69866b67/", image: "../profile-pictures/paromita.jpg" }
+        ];
+
+        const entrepreneurList = [
+            { name: "Masoomul Haque C.", role: "Founder at HydroSec Quantum Technologies", engineeringDegree: "B.Tech IT (2022-2025)", linkedin: "https://www.linkedin.com/in/masoomul-haque-c-a4397a88/", image: "../profile-pictures/masoomul.jpg" },
+            { name: "Dipangka Kalita", role: "Founder at Waplify", engineeringDegree: "B.Tech IT (2020-2023)", linkedin: "https://www.linkedin.com/in/dipankakalita/", image: "../profile-pictures/dipanga.jpg" }
+        ];
+
+        const categories = [
+            { tag: "OUR PEOPLE", title: "Tech Leaders", subtitle: "who laid the vision behind the community", alumni: placementList },
+            { tag: "OUR PEOPLE", title: "pursuing higher studies in india", subtitle: "", alumni: higherStudiesIndiaList },
+            { tag: "OUR PEOPLE", title: "exploring global opportunities", subtitle: "", alumni: abroadList },
+            { tag: "OUR PEOPLE", title: "the entrepreneurs", subtitle: "", alumni: entrepreneurList }
+        ];
+
+        function renderDirectory() {
+            const container = document.getElementById('directoryContent');
+            let html = '';
+
+            categories.forEach(cat => {
+                html += `
+                    <div class="category-block">
+                        <div class="category-header-banner">
+                            <span class="category-tag">${cat.tag}</span>
+                            <h2 class="font-heading category-title">${cat.title}</h2>
+                            ${cat.subtitle ? `<p class="category-sub">${cat.subtitle}</p>` : ''}
+                        </div>
+                        <div class="cards-grid">
+                `;
+
+                cat.alumni.forEach(al => {
+                    html += `
+                        <div class="alumni-dir-card">
+                            <div class="avatar-circle">
+                                <img src="${al.image}" alt="${al.name}" loading="lazy">
+                            </div>
+                            <h3 class="font-heading alumni-card-name">${al.name}</h3>
+                            <p class="alumni-card-role">${al.role}</p>
+                            <div class="alumni-card-footer">
+                                <span class="degree-badge">${al.engineeringDegree}</span>
+                                ${al.linkedin ? `
+                                    <a href="${al.linkedin}" target="_blank" rel="noopener noreferrer" class="linkedin-link-btn" title="LinkedIn Profile">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                                            <circle cx="4" cy="4" r="2" />
+                                        </svg>
+                                    </a>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            if (window.lucide) window.lucide.createIcons();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDirectory();
+        });
+    </script>
+</body>
+</html>

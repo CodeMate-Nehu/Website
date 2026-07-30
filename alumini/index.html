@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Network | CodeMate</title>
+    <meta name="description" content="Connect with CodeMate alumni working at top tech firms, pursuing higher studies globally, and founding startups.">
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=League+Spartan:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        :root {
+            --brand-primary: #f37f30;
+            --brand-primary-dark: #d5641b;
+            --brand-orange-bg: #e87c33;
+            --bg-dark: #fdfdfd;
+            --text-dark: #111827;
+            --text-muted: #6b7280;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .font-heading {
+            font-family: 'League Spartan', sans-serif;
+        }
+
+        /* Ambient Glows */
+        .orange-glow-top {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1000px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(243, 127, 48, 0.12) 0%, rgba(243, 127, 48, 0.03) 50%, rgba(253, 253, 253, 0) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Container Limit */
+        .alumni-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Hero Landing Area (Edge to Edge, 100vh Height - Matches Events Page) */
+        .alumni-hero-section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 24px 80px 24px;
+            background-color: #fdfdfd;
+            background-image:
+              linear-gradient(to right, rgba(36, 36, 36, 0.05) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(26, 25, 25, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            margin-bottom: 4rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(243, 127, 48, 0.1);
+            border: 1px solid rgba(243, 127, 48, 0.2);
+            border-radius: 9999px;
+            padding: 4px 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #f37f30;
+            flex-shrink: 0;
+        }
+
+        .badge-text {
+            font-family: "Inter", "Outfit", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: #f37f30;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: "League Spartan", "Outfit", sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.025em;
+            margin-bottom: 24px;
+            color: #18181b;
+        }
+
+        @media (min-width: 640px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 6rem;
+            }
+        }
+
+        .hero-title span {
+            color: #f37f30;
+        }
+
+        .hero-subtext {
+            font-size: 1rem;
+            color: #52525b;
+            max-width: 672px;
+            margin: 0 auto 36px;
+            line-height: 1.625;
+        }
+
+        @media (min-width: 640px) {
+            .hero-subtext {
+                font-size: 1.125rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-subtext {
+                font-size: 1.25rem;
+            }
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #f37f30;
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 36px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: "Outfit", sans-serif;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 30px rgba(243, 127, 48, 0.45);
+            color: #ffffff;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1a1a1a;
+            border: 1.5px solid #e8e8e8;
+            border-radius: 50px;
+            padding: 15px 36px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: "Outfit", sans-serif;
+            text-decoration: none;
+            transition: transform 0.2s, border-color 0.2s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            transform: scale(1.04);
+            border-color: #aaa;
+            color: #1a1a1a;
+        }
+
+        .hero-img-card {
+            background: #ffffff;
+            padding: 0.75rem;
+            border-radius: 1.25rem;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            box-shadow: 0 20px 40px rgba(243, 127, 48, 0.08);
+            transition: transform 0.3s ease;
+            max-width: 800px;
+            margin: 3rem auto 0 auto;
+        }
+
+        .hero-img-card:hover {
+            transform: scale(1.02);
+        }
+
+        .hero-img-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.875rem;
+            filter: grayscale(100%);
+            aspect-ratio: 3/2;
+            object-fit: cover;
+        }
+
+        /* Stats & Get to Know Section */
+        .get-to-know-card {
+            background: #f9fafb;
+            border-radius: 1.75rem;
+            padding: 3rem;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            margin-bottom: 4rem;
+        }
+
+        .stats-header-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        @media (min-width: 992px) {
+            .stats-header-grid {
+                grid-template-columns: 1fr 1.2fr;
+            }
+        }
+
+        .section-tag-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--brand-primary);
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: #030712;
+            line-height: 1.1;
+            text-transform: lowercase;
+            margin-bottom: 1rem;
+        }
+
+        .stat-boxes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .stat-boxes-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .stat-pill {
+            background: #ffffff;
+            border: 1px solid rgba(243, 127, 48, 0.2);
+            border-radius: 0.875rem;
+            padding: 1.25rem 0.75rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--brand-primary);
+            line-height: 1;
+        }
+
+        .stat-lbl {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.35rem;
+            display: block;
+        }
+
+        /* Vertical Tabs System */
+        .tabs-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 992px) {
+            .tabs-layout {
+                grid-template-columns: 1fr 2fr;
+            }
+        }
+
+        .tab-btn {
+            width: 100%;
+            text-align: left;
+            padding: 1rem 1.25rem;
+            border-radius: 0.75rem;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #4b5563;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            background: rgba(243, 244, 246, 0.8);
+            color: #111827;
+        }
+
+        .tab-btn.active {
+            background: #ffffff;
+            color: var(--brand-primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--brand-primary);
+        }
+
+        .tab-content-card {
+            background: var(--brand-orange-bg);
+            border-radius: 1.25rem;
+            padding: 2.5rem;
+            color: #000000;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 280px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(232, 124, 51, 0.25);
+        }
+
+        .tab-icon-box {
+            width: 3rem;
+            height: 3rem;
+            background: #000000;
+            color: #ffffff;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-content-title {
+            font-size: 1.875rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .tab-content-desc {
+            font-size: 0.95rem;
+            color: rgba(0,0,0,0.85);
+            line-height: 1.6;
+            max-width: 540px;
+        }
+
+        .btn-view-all-dark {
+            background: #000000;
+            color: #ffffff;
+            padding: 0.65rem 1.75rem;
+            border-radius: 9999px;
+            font-size: 0.8125rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s ease;
+            text-decoration: none;
+            margin-top: 1.5rem;
+        }
+
+        .btn-view-all-dark:hover {
+            background: #1f2937;
+            color: #ffffff;
+        }
+
+        /* Meet the Club Alumni Cards */
+        .section-card-white {
+            background: #ffffff;
+            border-radius: 1.75rem;
+            padding: 3rem;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            margin-bottom: 4rem;
+        }
+
+        .alumni-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .alumni-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .alumnus-card {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .alumnus-img-wrap {
+            position: relative;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            background: #f3f4f6;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            aspect-ratio: 1/1;
+        }
+
+        .alumnus-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+
+        .alumnus-card:hover .alumnus-img-wrap img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .alumnus-name {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+
+        .alumnus-role {
+            font-size: 0.8125rem;
+            color: var(--brand-primary);
+            font-weight: 600;
+        }
+
+        /* Interactive Chat Section */
+        .chat-window {
+            max-width: 768px;
+            margin: 2rem auto 0 auto;
+            background: #f9fafb;
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 480px;
+        }
+
+        .chat-window-header {
+            background: #f3f4f6;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 0.375rem;
+        }
+
+        .window-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .chat-body {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chat-msg {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 85%;
+        }
+
+        .chat-msg.ai {
+            align-self: flex-start;
+        }
+
+        .chat-msg.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .chat-avatar {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .chat-msg.ai .chat-avatar {
+            background: var(--brand-primary);
+            color: #000000;
+        }
+
+        .chat-msg.user .chat-avatar {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .chat-bubble {
+            padding: 1rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .chat-msg.ai .chat-bubble {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            color: #374151;
+            border-top-left-radius: 0.25rem;
+        }
+
+        .chat-msg.user .chat-bubble {
+            background: var(--brand-primary);
+            color: #000000;
+            font-weight: 500;
+            border-top-right-radius: 0.25rem;
+        }
+
+        .chat-form {
+            background: #f3f4f6;
+            border-top: 1px solid #e5e7eb;
+            padding: 0.75rem 1rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 0.65rem 1rem;
+            font-size: 0.875rem;
+            outline: none;
+        }
+
+        .chat-input:focus {
+            border-color: var(--brand-primary);
+        }
+
+        .chat-send-btn {
+            background: var(--brand-primary);
+            color: #000000;
+            border: none;
+            border-radius: 0.75rem;
+            padding: 0.65rem 1.25rem;
+            font-size: 0.8125rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .chat-send-btn:hover {
+            background: var(--brand-primary-dark);
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="orange-glow-top"></div>
+    <div id="navbar-container"></div>
+
+    <!-- HERO LANDING AREA (Edge-to-edge full width background, 100vh height) -->
+    <section class="alumni-hero-section">
+        <div style="position: relative; z-index: 1; max-width: 900px; width: 100%;">
+            <div class="hero-badge">
+                <div class="badge-dot"></div>
+                <span class="badge-text">pathways connect</span>
+            </div>
+            <h1 class="hero-title">guide. <span>inspire.</span><br />lead.</h1>
+            <p class="hero-subtext">
+                A community of engineers, developers, and creators who helped shape our foundation. Connect with the trailblazers setting new standards in the modern tech landscape.
+            </p>
+            <div class="hero-btns">
+                <a href="#get-to-know" class="btn-primary">Explore Alumni</a>
+                <a href="viewall.html" class="btn-secondary">View Directory</a>
+            </div>
+        </div>
+    </section>
+
+    <main class="alumni-container">
+
+        <!-- GET TO KNOW SECTION -->
+        <section class="get-to-know-card" id="get-to-know">
+            <div class="stats-header-grid">
+                <div>
+                    <span class="section-tag-badge">OUR STATS</span>
+                    <h2 class="font-heading stats-title">get to know</h2>
+                    <p style="font-size: 0.95rem; color: #4b5563; line-height: 1.6;">
+                        Our alumni community is growing rapidly across the globe. Our graduates are building the future at top-tier tech firms, startups, and research institutes.
+                    </p>
+                </div>
+                <div class="stat-boxes-grid">
+                    <div class="stat-pill">
+                        <div class="font-heading stat-num">30+</div>
+                        <span class="stat-lbl">alumni</span>
+                    </div>
+                    <div class="stat-pill">
+                        <div class="font-heading stat-num">15+</div>
+                        <span class="stat-lbl">tech leaders</span>
+                    </div>
+                    <div class="stat-pill">
+                        <div class="font-heading stat-num">20+</div>
+                        <span class="stat-lbl">higher studies</span>
+                    </div>
+                    <div class="stat-pill">
+                        <div class="font-heading stat-num">15+</div>
+                        <span class="stat-lbl">global opportunity</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB SYSTEM -->
+            <div class="tabs-layout">
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <button class="tab-btn active" onclick="switchTab('tech', this)">
+                        <span>Tech</span>
+                        <i data-lucide="chevron-right" style="width: 1rem; height: 1rem;"></i>
+                    </button>
+                    <button class="tab-btn" onclick="switchTab('studies', this)">
+                        <span>Higher Studies</span>
+                        <i data-lucide="chevron-right" style="width: 1rem; height: 1rem;"></i>
+                    </button>
+                    <button class="tab-btn" onclick="switchTab('entrepreneurs', this)">
+                        <span>Entrepreneurs</span>
+                        <i data-lucide="chevron-right" style="width: 1rem; height: 1rem;"></i>
+                    </button>
+                    <button class="tab-btn" onclick="switchTab('global', this)">
+                        <span>Global</span>
+                        <i data-lucide="chevron-right" style="width: 1rem; height: 1rem;"></i>
+                    </button>
+                </div>
+
+                <div class="tab-content-card" id="tabContentCard">
+                    <div>
+                        <div class="tab-icon-box" id="tabIconBox">
+                            <i data-lucide="terminal"></i>
+                        </div>
+                        <h3 class="font-heading tab-content-title" id="tabTitle">Tech leaders in the making</h3>
+                        <p class="tab-content-desc" id="tabDesc">
+                            World-class developers, product managers, and tech leaders building systems that scale, from early-stage startups to Fortune 500 companies.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="viewall.html" class="btn-view-all-dark">View all</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEET THE CLUB ALUMNI -->
+        <section class="section-card-white">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e5e7eb; padding-bottom: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <span style="width: 10px; height: 10px; background: var(--brand-primary); display: inline-block; border-radius: 2px;"></span>
+                        <span class="font-heading" style="font-weight: 700; text-transform: uppercase; font-size: 0.875rem; letter-spacing: 0.05em; color: #374151;">Meet the Club Alumni</span>
+                    </div>
+                    <p style="font-size: 0.875rem; color: #6b7280; max-width: 600px;">
+                        The alumni who built CodeMate. They work at different companies, different roles. Check out their profiles to understand how they can help you grow.
+                    </p>
+                </div>
+                <div>
+                    <a href="viewall.html" class="btn-view-all-dark">
+                        <span>View All</span>
+                        <i data-lucide="arrow-right" style="width: 1rem; height: 1rem;"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="alumni-grid">
+                <!-- Alumni 1 -->
+                <div class="alumnus-card" onclick="window.open('https://www.linkedin.com/in/abhi-nitnaware/', '_blank')">
+                    <div class="alumnus-img-wrap">
+                        <img src="../profile-pictures/abhinitnaware.jpg" alt="Abhi Nitnaware">
+                    </div>
+                    <div>
+                        <h4 class="alumnus-name">Abhi Nitnaware</h4>
+                        <p class="alumnus-role">PhD, AI/ML at MNIT, Nagpur</p>
+                    </div>
+                </div>
+                <!-- Alumni 2 -->
+                <div class="alumnus-card" onclick="window.open('https://www.linkedin.com/in/22harshpandey/', '_blank')">
+                    <div class="alumnus-img-wrap">
+                        <img src="../profile-pictures/Harsh-Pandeypng.png" alt="Harsh Pandey">
+                    </div>
+                    <div>
+                        <h4 class="alumnus-name">Harsh Pandey</h4>
+                        <p class="alumnus-role">Software Engineer at Pursuit Software</p>
+                    </div>
+                </div>
+                <!-- Alumni 3 -->
+                <div class="alumnus-card" onclick="window.open('https://www.linkedin.com/in/abhishek-kumar-rai-6b46a6269/', '_blank')">
+                    <div class="alumnus-img-wrap">
+                        <img src="../profile-pictures/Abhishek-raijpg.jpg" alt="Abhishek Kumar Rai">
+                    </div>
+                    <div>
+                        <h4 class="alumnus-name">Abhishek Kumar Rai</h4>
+                        <p class="alumnus-role">Data Engineer - BTSA at ZS</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ASK & GET ANSWERS CHATBOT (COMMENTED OUT) -->
+        <!--
+        <section class="section-card-white">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto 2rem auto;">
+                <h2 class="font-heading" style="font-size: 2.5rem; font-weight: 800; text-transform: uppercase; color: #111827; margin-bottom: 0.5rem;">Ask & Get Answers</h2>
+                <p style="font-size: 0.95rem; color: #6b7280;">
+                    Ask a question and get answers from our alumni network. You can also explore answers to questions asked by other students.
+                </p>
+            </div>
+
+            <div class="chat-window">
+                <div class="chat-window-header">
+                    <div class="window-dots">
+                        <div class="window-dot dot-red"></div>
+                        <div class="window-dot dot-yellow"></div>
+                        <div class="window-dot dot-green"></div>
+                    </div>
+                    <div style="font-size: 0.75rem; font-weight: 600; color: #4b5563;">CodeMate Alumni Assistant</div>
+                    <div style="width: 2.5rem;"></div>
+                </div>
+
+                <div class="chat-body" id="chatBody">
+                    <div class="chat-msg ai">
+                        <div class="chat-avatar">CM</div>
+                        <div class="chat-bubble">
+                            Hi student! I'm CodeMate's AI Alumni coordinator. How can I help you connect with our alumni? What do you want to know?
+                        </div>
+                    </div>
+                </div>
+
+                <form class="chat-form" id="chatForm" onsubmit="handleSendMsg(event)">
+                    <i data-lucide="paperclip" style="width: 1.25rem; height: 1.25rem; color: #6b7280; cursor: pointer;"></i>
+                    <input type="text" id="chatInput" class="chat-input" placeholder="Ask a question (e.g. 'How to get into Google?', 'Higher studies abroad')">
+                    <button type="submit" class="chat-send-btn">
+                        <span>Ask Alumni</span>
+                        <i data-lucide="send" style="width: 0.875rem; height: 0.875rem;"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+        -->
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        const tabData = {
+            tech: {
+                title: "Tech leaders in the making",
+                desc: "World-class developers, product managers, and tech leaders building systems that scale, from early-stage startups to Fortune 500 companies.",
+                icon: "terminal"
+            },
+            studies: {
+                title: "Pioneering academic careers",
+                desc: "Alumni pursuing Masters and PhDs at top-ranked universities worldwide.",
+                icon: "graduation-cap"
+            },
+            entrepreneurs: {
+                title: "Disruptive founders",
+                desc: "Entrepreneurs who built scalable products, launched tech startups, and secured venture funding to address modern real-world challenges.",
+                icon: "briefcase"
+            },
+            global: {
+                title: "Global presence & network",
+                desc: "Our alumni chapters span across the globe, fostering a strong network of professionals, innovators, and mentors who continue to support and inspire.",
+                icon: "globe"
+            }
+        };
+
+        function switchTab(key, btnEl) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btnEl.classList.add('active');
+
+            const item = tabData[key];
+            document.getElementById('tabTitle').innerText = item.title;
+            document.getElementById('tabDesc').innerText = item.desc;
+            
+            const iconBox = document.getElementById('tabIconBox');
+            iconBox.innerHTML = `<i data-lucide="${item.icon}"></i>`;
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        }
+
+        /* AI Chatbot logic (Commented out)
+        function handleSendMsg(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const val = input.value.trim();
+            if (!val) return;
+
+            const chatBody = document.getElementById('chatBody');
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-msg user';
+            userMsg.innerHTML = `
+                <div class="chat-avatar">ME</div>
+                <div class="chat-bubble">${val}</div>
+            `;
+            chatBody.appendChild(userMsg);
+            input.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            setTimeout(() => {
+                let reply = "That's a great question! I'd recommend reaching out to our alumni network on LinkedIn or through our Slack workspace.";
+                const lower = val.toLowerCase();
+
+                if (lower.includes("google") || lower.includes("software") || lower.includes("tech") || lower.includes("coding")) {
+                    reply = "Focus heavily on data structures, algorithms, and system design. Make sure to participate in open source projects to make your resume stand out.";
+                } else if (lower.includes("abroad") || lower.includes("studies") || lower.includes("mit") || lower.includes("ms") || lower.includes("phd")) {
+                    reply = "Start working on research publications early. Strong recommendation letters from professors who know your work personally are crucial for top universities.";
+                } else if (lower.includes("startup") || lower.includes("founder") || lower.includes("business")) {
+                    reply = "Don't wait for the perfect idea. Build a simple MVP, launch it to actual users, collect feedback, and iterate. Community support is everything!";
+                }
+
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'chat-msg ai';
+                aiMsg.innerHTML = `
+                    <div class="chat-avatar">CM</div>
+                    <div class="chat-bubble">${reply}</div>
+                `;
+                chatBody.appendChild(aiMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+                if (window.lucide) window.lucide.createIcons();
+            }, 800);
+        }
+        */
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) window.lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

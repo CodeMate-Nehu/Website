@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>CodeMate Events — Build. Connect. Grow.</title>
+    <title>Join the action</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -25,6 +25,7 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"
       defer
     ></script>
+    <script src="../events-data.js" defer></script>
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -33,35 +34,14 @@
 
     <!-- HERO -->
     <section id="hero">
-      <div class="grid-bg">
-        <svg id="hero-grid" xmlns="http://www.w3.org/2000/svg"></svg>
-      </div>
-      <div
-        class="orb"
-        style="
-          width: 420px;
-          height: 420px;
-          background: rgba(255, 107, 0, 0.07);
-          top: 15%;
-          left: 8%;
-        "
-      ></div>
-      <div
-        class="orb"
-        style="
-          width: 300px;
-          height: 300px;
-          background: rgba(255, 107, 0, 0.05);
-          bottom: 15%;
-          right: 8%;
-        "
-      ></div>
+
+
       <div style="position: relative; z-index: 1; max-width: 900px">
         <div class="hero-badge fade-up">
           <div class="badge-dot"></div>
           <span class="badge-text">Build. Connect. Grow.</span>
         </div>
-        <h1 class="fade-up">CodeMate<br /><span>Events</span></h1>
+        <h1 class="fade-up">attend. <span>network.</span><br />celebrate.</h1>
         <p class="fade-up">
           A journey of innovation, collaboration, hackathons, workshops, and
           unforgettable tech experiences.
@@ -102,6 +82,7 @@
         <svg id="detail-grid" xmlns="http://www.w3.org/2000/svg"></svg>
       </div>
       <div id="detail-inner">
+        <button class="detail-close-btn" onclick="closeEventDetail()" title="Close details">✕</button>
         <div class="sec-head fade-up">
           <div class="sec-label">
             <div class="sec-line"></div>

@@ -1,0 +1,16 @@
+{
+    "testimonials": [
+        {
+            "author": "Harsh Pandey",
+            "testimonial": "When we established the club back in 2022, our goal was to bridge the gap between academic theory and coding environment. Reflecting on my year as club lead, I am incredibly proud of the culture of mentorship and events we set in motion. The launch of this website marks a major milestone in the club’s evolution. It serves as a digital portfolio of our growth and a launchpad for the next generation of tech leaders at our college. It is an honour to see the vision we started with continue to thrive so powerfully."
+        },
+        {
+            "author": "Bikash Barua",
+            "testimonial": "Being a founding member of CodeMate Club has been a truly rewarding experience. It is inspiring to see how the club has grown into a platform where students can learn, collaborate, and explore new technologies together. I am proud to have contributed to its foundation and look forward to seeing it continue to empower future innovators and developers."
+        },
+        {
+            "author": "Asif Ahmed",
+            "testimonial": "A commendable initiative by Code Mate at NEHU, empowering students to strengthen their technological capabilities and industry readiness. It's encouraging to witness an ecosystem where continuous learning, innovation, and hands-on skill development are shaping the next generation of technology professionals."
+        }
+    ]
+}

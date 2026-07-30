@@ -1,22 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ── 1. CORE SETUP & COMPONENT LOADING ──
+    const isSubdir = window.location.pathname.toLowerCase().includes('/alumini/') || window.location.pathname.toLowerCase().includes('/resources/') || window.location.pathname.toLowerCase().includes('/contact/') || window.location.pathname.toLowerCase().includes('/eventsection/');
+    const basePath = isSubdir ? '../' : '';
+
     const components = [
-        { id: 'navbar-container', path: 'components/navbar.html' },
-        { id: 'hero-container', path: 'components/hero.html' },
-        { id: 'resources-container', path: 'components/resources.html' },
-        { id: 'events-container', path: 'components/events.html' },
-        { id: 'impact-container', path: 'components/impact.html' },
-        { id: 'members-container', path: 'components/members.html' },
-        { id: 'footer-container', path: 'components/footer.html' },
-        { id: 'chatbot-container', path: 'components/chatbot.html' }
+        { id: 'navbar-container', path: basePath + 'components/navbar.html' },
+        { id: 'hero-container', path: basePath + 'components/hero.html' },
+        { id: 'resources-container', path: basePath + 'components/resources.html' },
+        { id: 'events-container', path: basePath + 'components/events.html' },
+        { id: 'testimonials-container', path: basePath + 'components/testimonials.html' },
+        { id: 'impact-container', path: basePath + 'components/impact.html' },
+        { id: 'members-container', path: basePath + 'components/members.html' },
+        { id: 'footer-container', path: basePath + 'components/footer.html' },
+        { id: 'chatbot-container', path: basePath + 'components/chatbot.html' }
     ];
 
     async function loadComponent(component) {
+        const targetEl = document.getElementById(component.id);
+        if (!targetEl) return;
         try {
             const response = await fetch(component.path);
             if (!response.ok) throw new Error(`Failed to load ${component.path}`);
-            const html = await response.text();
-            document.getElementById(component.id).innerHTML = html;
+            let html = await response.text();
+            if (isSubdir) {
+                const currentPath = window.location.pathname.toLowerCase();
+                const inAlumni = currentPath.includes('/alumini/');
+                const inResources = currentPath.includes('/resources/');
+                const inContact = currentPath.includes('/contact/');
+
+                html = html.replace(/src="images\//g, 'src="../images/')
+                           .replace(/href="index.html"/g, 'href="../index.html"')
+                           .replace(/href="#/g, 'href="../index.html#')
+                           .replace(/href="alumini\/index.html"/g, inAlumni ? 'index.html' : '../alumini/index.html')
+                           .replace(/href="resources\/index.html"/g, inResources ? 'index.html' : '../resources/index.html')
+                           .replace(/href="contact\/index.html"/g, inContact ? 'index.html' : '../contact/index.html');
+            }
+            targetEl.innerHTML = html;
         } catch (error) {
             console.error("Component Load Error:", error);
         }
@@ -188,16 +206,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
             menuLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    e.preventDefault();
                     const href = this.getAttribute('href');
-                    closeMenu();
-                    setTimeout(() => {
-                        const targetId = href.substring(1);
-                        const target = document.getElementById(targetId);
-                        if (target) {
-                            target.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    }, 600);
+                    if (!href) return;
+
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        closeMenu();
+                        setTimeout(() => {
+                            const targetId = href.substring(1);
+                            const target = document.getElementById(targetId);
+                            if (target) {
+                                target.scrollIntoView({ behavior: 'smooth' });
+                            } else {
+                                window.location.href = (isSubdir ? '../index.html' : 'index.html') + href;
+                            }
+                        }, 500);
+                    } else {
+                        e.preventDefault();
+                        closeMenu();
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 400);
+                    }
                 });
             });
 
@@ -214,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (target) {
                             target.scrollIntoView({ behavior: 'smooth' });
                         } else {
-                            window.location.href = 'index.html';
+                            window.location.href = isSubdir ? '../index.html' : 'index.html';
                         }
                     }, isMenuOpen ? 600 : 0);
                 });
@@ -551,6 +581,47 @@ document.addEventListener('DOMContentLoaded', () => {
         if (membersSection) updateMembersUI('founders');
 
         // ── 7. EVENTS SECTION (Animated Events) ──
+        function syncEventsSection() {
+            if (typeof window.getLatestEvents !== 'function') return;
+            const latest = window.getLatestEvents(3);
+            const cardsContainer = document.querySelector('.events-animated-right');
+            const dotsContainer = document.querySelector('.events-nav-dots');
+            if (!cardsContainer || !dotsContainer || !latest.length) return;
+
+            let htmlCards = latest.map((ev, idx) => {
+                const imgPath = isSubdir ? '../eventSection/' + ev.img : 'eventSection/' + ev.img;
+                const linkPath = isSubdir ? '../eventSection/index.html?event=' + ev.id : 'eventSection/index.html?event=' + ev.id;
+                return `
+                <div class="event-animated-card ${idx === 0 ? 'active' : ''}" data-index="${idx}" data-id="${ev.id}">
+                    <div class="event-card">
+                        <div class="event-image">
+                            <img src="${imgPath}" alt="${ev.name}">
+                            <span class="event-tag">${ev.cat}</span>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-meta">
+                                <span><i data-lucide="calendar"></i> ${ev.date}</span>
+                                <span><i data-lucide="map-pin"></i> ${ev.location || 'Online'}</span>
+                            </div>
+                            <h3>${ev.name}</h3>
+                            <p>${ev.short}</p>
+                            <a href="${linkPath}" class="event-link">View Event <i data-lucide="chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('') + '<div class="event-decor-bottom"></div><div class="event-decor-top"></div>';
+
+            cardsContainer.innerHTML = htmlCards;
+
+            dotsContainer.innerHTML = latest.map((_, idx) => 
+                `<button class="event-dot ${idx === 0 ? 'active' : ''}" aria-label="View event ${idx + 1}"></button>`
+            ).join('');
+
+            if (window.lucide) window.lucide.createIcons();
+        }
+
+        syncEventsSection();
+
         const eventCards = document.querySelectorAll('.event-animated-card');
         const eventDots = document.querySelectorAll('.event-dot');
         let activeEventIndex = 0;
@@ -569,8 +640,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             oldCard.style.pointerEvents = "none";
             newCard.style.pointerEvents = "auto";
-            eventDots[activeEventIndex].classList.remove('active');
-            eventDots[newIndex].classList.add('active');
+            if (eventDots[activeEventIndex]) eventDots[activeEventIndex].classList.remove('active');
+            if (eventDots[newIndex]) eventDots[newIndex].classList.add('active');
             activeEventIndex = newIndex;
         }
 
@@ -704,8 +775,154 @@ document.addEventListener('DOMContentLoaded', () => {
             const uniqueImages = [...new Set(imagesToPreload.filter(src => src && !src.startsWith('data:')))];
             uniqueImages.forEach(src => { const img = new Image(); img.src = src; });
             document.querySelectorAll('video').forEach(video => { video.preload = 'auto'; });
-            console.log(`[Preload] ${uniqueImages.length} images preloaded.`);
         }
+
+        // ── 12. TESTIMONIALS DATA & RENDER ──
+        let globalTestimonials = [];
+
+        function renderTestimonialTracks(testimonials) {
+            const authorMeta = {
+                "Harsh Pandey": {
+                    role: "Club Lead & Founder (2022)"
+                },
+                "Bikash Barua": {
+                    role: "Founding Member"
+                },
+                "Asif Ahmed": {
+                    role: "Industry Mentor & NEHU Tech Advisor"
+                }
+            };
+
+            const list = testimonials.map(item => {
+                const meta = authorMeta[item.author] || {
+                    role: item.role || "CodeMate Member"
+                };
+                return {
+                    name: item.author,
+                    text: item.testimonial,
+                    role: meta.role
+                };
+            });
+
+            function createCardHTML(item) {
+                return `
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"${item.text}"</p>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author-info">
+                                <span class="testimonial-name">${item.name}</span>
+                                <span class="testimonial-role">${item.role}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            const loopList = [...list, ...list, ...list, ...list];
+            const cardsHTML = loopList.map(createCardHTML).join('');
+
+            const track1 = document.getElementById('testimonial-track-1');
+            const track2 = document.getElementById('testimonial-track-2');
+            const track3 = document.getElementById('testimonial-track-3');
+
+            if (track1) track1.innerHTML = cardsHTML;
+            if (track2) track2.innerHTML = cardsHTML;
+            if (track3) track3.innerHTML = cardsHTML;
+        }
+
+        async function initTestimonials() {
+            try {
+                let testimonials = [];
+                try {
+                    const response = await fetch('/api/testimonials');
+                    if (response.ok) {
+                        const data = await response.json();
+                        testimonials = data.testimonials || [];
+                    } else {
+                        throw new Error('API route unavailable');
+                    }
+                } catch (apiErr) {
+                    const response = await fetch(basePath + 'testimonials.json');
+                    if (response.ok) {
+                        const data = await response.json();
+                        testimonials = data.testimonials || [];
+                    }
+                }
+
+                const localSaved = JSON.parse(localStorage.getItem('codemate_testimonials') || '[]');
+                localSaved.forEach(localItem => {
+                    if (!testimonials.some(t => t.author === localItem.author && t.testimonial === localItem.testimonial)) {
+                        testimonials.push(localItem);
+                    }
+                });
+
+                globalTestimonials = testimonials;
+                renderTestimonialTracks(globalTestimonials);
+            } catch (e) {
+                console.error("Testimonials error:", e);
+            }
+        }
+
+        function initTestimonialForm() {
+            const form = document.getElementById('add-testimonial-form');
+            if (!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const authorInput = document.getElementById('testimonial-author');
+                const roleInput = document.getElementById('testimonial-role');
+                const textInput = document.getElementById('testimonial-text');
+                const submitBtn = document.getElementById('testimonial-submit-btn');
+                const msgDiv = document.getElementById('testimonial-msg');
+
+                const author = authorInput.value.trim();
+                const role = roleInput.value.trim() || 'CodeMate Member';
+                const testimonial = textInput.value.trim();
+
+                if (!author || !testimonial) return;
+
+                submitBtn.disabled = true;
+                const btnSpan = submitBtn.querySelector('span');
+                if (btnSpan) btnSpan.textContent = 'Submitting...';
+
+                const newEntry = { author, testimonial, role };
+
+                try {
+                    await fetch('/api/testimonials', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(newEntry)
+                    });
+                } catch (err) {
+                    console.log('API save note: local state updated');
+                }
+
+                const localSaved = JSON.parse(localStorage.getItem('codemate_testimonials') || '[]');
+                localSaved.push(newEntry);
+                localStorage.setItem('codemate_testimonials', JSON.stringify(localSaved));
+
+                if (!globalTestimonials.some(t => t.author === author && t.testimonial === testimonial)) {
+                    globalTestimonials.push(newEntry);
+                }
+                renderTestimonialTracks(globalTestimonials);
+
+                msgDiv.style.display = 'block';
+                msgDiv.className = 'testimonial-msg success';
+                msgDiv.textContent = 'Thank you! Your testimonial has been submitted and added to testimonials.json.';
+
+                form.reset();
+                submitBtn.disabled = false;
+                if (btnSpan) btnSpan.textContent = 'Submit Testimonial';
+
+                setTimeout(() => {
+                    msgDiv.style.display = 'none';
+                }, 5000);
+            });
+        }
+
+        initTestimonials();
+        initTestimonialForm();
+
         setTimeout(preloadAssets, 1000);
     }
 

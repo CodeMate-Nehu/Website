@@ -1,0 +1,64 @@
+<!-- ========================================== -->
+<!--            TESTIMONIALS SECTION            -->
+<!-- ========================================== -->
+<section id="testimonials-section" class="testimonials-section section">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="section-header text-center">
+            <span class="section-tagline">don't just take our word for it</span>
+            <h2 class="section-title">let our <span class="accent">community</span> tell the story</h2>
+            <p class="section-subtitle-testimonials">hear from our founders, mentors, and members about how CodeMate empowers student developers.</p>
+        </div>
+
+        <!-- Animated Infinite Testimonial Columns -->
+        <div class="testimonials-marquee-container" role="region" aria-label="Community Testimonials">
+            <!-- Column 1 -->
+            <div class="testimonials-column col-1">
+                <div class="testimonials-track" id="testimonial-track-1">
+                    <!-- Populated dynamically via script.js from testimonials.json -->
+                </div>
+            </div>
+
+            <!-- Column 2 (Hidden on mobile) -->
+            <div class="testimonials-column col-2">
+                <div class="testimonials-track track-reverse" id="testimonial-track-2">
+                    <!-- Populated dynamically via script.js from testimonials.json -->
+                </div>
+            </div>
+
+            <!-- Column 3 (Desktop layout) -->
+            <div class="testimonials-column col-3">
+                <div class="testimonials-track" id="testimonial-track-3">
+                    <!-- Populated dynamically via script.js from testimonials.json -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Your Testimonial Form Container (Sleek Compact Design) -->
+        <div class="add-testimonial-container">
+            <div class="add-testimonial-card">
+                <div class="add-testimonial-header text-center">
+                    <span class="testimonial-tag-badge">ADD YOUR VOICE</span>
+                    <p class="add-testimonial-subtitle">Share your experience to inspire the CodeMate community</p>
+                </div>
+                
+                <form id="add-testimonial-form" class="add-testimonial-form">
+                    <div class="form-row">
+                        <input type="text" id="testimonial-author" required placeholder="Your Name *" class="form-input">
+                        <input type="text" id="testimonial-role" placeholder="Role / Title (Optional)" class="form-input">
+                    </div>
+                    
+                    <textarea id="testimonial-text" required rows="2" placeholder="Write your testimonial..." class="form-textarea"></textarea>
+
+                    <div class="form-bottom-row">
+                        <button type="submit" id="testimonial-submit-btn" class="testimonial-submit-btn">
+                            <span>Submit</span>
+                            <i data-lucide="send" style="width: 0.9rem; height: 0.9rem;"></i>
+                        </button>
+                    </div>
+                    <div id="testimonial-msg" class="testimonial-msg hidden" style="display: none;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
